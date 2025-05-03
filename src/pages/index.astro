@@ -11,7 +11,7 @@
 <body>
 <main>
 <div class="loader"><div></div><div></div><div></div></div>
-<h1><a href="https://github.com/dnhn/nhan.dev" target="_blank" rel="noopener noreferrer">building nhan.dev…</a></h1>
+<h1>building <a href="https://github.com/dnhn/nhan.dev" target="_blank" rel="noopener noreferrer">nhan.dev</a></h1>
 </main>
 </body>
 </html>
@@ -40,7 +40,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
   }
 
   h1 {
@@ -48,12 +47,16 @@
   }
 
   a {
-    text-underline-offset: 2px;
-    color: white;
-  }
-
-  a:hover, a:focus {
+    background: linear-gradient(0deg, #333, white, #333) text;
+    background-size: 100% 200%;
+    color: transparent;
+    font-size: 1.25rem;
     text-decoration: none;
+    transition: background-position 500ms;
+
+    &:not(:hover, :focus) {
+      background-position-y: 100%;
+    }
   }
 
   .loader {
