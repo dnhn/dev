@@ -1,20 +1,48 @@
 ---
+import LinkedInIcon from '@/components/icons/linkedin-icon.astro'
+import GitHubIcon from '@/components/icons/github-icon.astro'
 ---
 
 <footer class="bg-gray-50 text-right text-xl dark:bg-gray-800">
   <div class="container py-8 pb-16 lg:pt-16 lg:pb-24">
     <div>
-      <h3 class="mb-2 font-bold">
+      <h3 class="group inline-block mb-2 font-bold">
+        <span class="opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 cursor-grab">👋🏼&nbsp;</span>
+        <span class="opacity-50 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity sm:opacity-20 cursor-grab">hey [at]</span>
         <a href="https://nhan.dev">nhan.dev</a>
       </h3>
       <p class="text-gray-600 text-lg dark:text-gray-300">Make the Web a better place</p>
     </div>
-    <ul class="mt-6 flex items-center justify-end flex-wrap gap-y-2 gap-x-4">
-      <li><a href="https://github.com/dnhn" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">GitHub</a></li>
-      <li><a href="https://linkedin.com/in/dnhn" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">LinkedIn</a></li>
+    <ul class="mt-6 flex items-center justify-end flex-wrap gap-4">
+      <li>
+        <a
+          href="https://github.com/dnhn"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
+        >
+          <GitHubIcon aria-label="GitHub" class="size-11" />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://linkedin.com/in/dnhn"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
+        >
+          <LinkedInIcon aria-label="LinkedIn" class="size-11" />
+        </a>
+      </li>
     </ul>
     <p class="mt-16 text-gray-600 text-base dark:text-gray-300">
-      been fooling around since 2008.
+      been fooling around since
+      <a
+        href="https://en.wikipedia.org/wiki/2008"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-bold italic"
+      >2008</a>.
     </p>
   </div>
 </footer>
