@@ -7,12 +7,12 @@
 }
 
 @layer base {
-  body {
-    @apply antialiased bg-white font-serif dark:bg-gray-950 text-gray-950 dark:text-white transition-colors;
+  * {
+    @apply selection:bg-transparent selection:line-through;
   }
 
-  a {
-    @apply text-gray-950 dark:text-white;
+  body {
+    @apply antialiased font-serif;
   }
 }
 
