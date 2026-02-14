@@ -1,0 +1,89 @@
+---
+const projects = [
+  {
+    title: "Project Alpha",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=400&fit=crop",
+    url: "https://example.com/alpha"
+  },
+  {
+    title: "Project Beta",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop",
+    url: "https://example.com/beta"
+  },
+  {
+    title: "Project Gamma",
+    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=400&fit=crop"
+  },
+  {
+    title: "Project Delta",
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=400&fit=crop",
+    url: "https://example.com/delta"
+  },
+  {
+    title: "Project Epsilon",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop"
+  },
+  {
+    title: "Project Zeta",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=400&fit=crop",
+    url: "https://example.com/zeta"
+  },
+  {
+    title: "Project Eta",
+    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=400&fit=crop"
+  },
+  {
+    title: "Project Theta",
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=400&fit=crop",
+    url: "https://example.com/theta"
+  },
+  {
+    title: "Project Iota",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop"
+  },
+  {
+    title: "Project Kappa",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=400&fit=crop",
+    url: "https://example.com/kappa"
+  },
+]
+---
+
+<section class="w-screen h-lvh overflow-hidden flex items-center">
+  <div class="flex will-change-transform">
+    <div class="flex gap-16 px-16 will-change-transform">
+      {projects.map(project => (
+        project.url ? (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-80 sm:w-96 aspect-square overflow-hidden cursor-pointer"
+          >
+            <article class="relative size-full">
+              <img
+                src={project.image}
+                alt={project.title}
+                class="size-full object-cover"
+              />
+              <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex items-end">
+                <h3 class="text-white text-2xl font-semibold p-6">{project.title}</h3>
+              </div>
+            </article>
+          </a>
+        ) : (
+          <article class="w-80 sm:w-96 aspect-square overflow-hidden relative">
+            <img
+              src={project.image}
+              alt={project.title}
+              class="size-full object-cover"
+            />
+            <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex items-end">
+              <h3 class="text-white text-2xl font-semibold p-6">{project.title}</h3>
+            </div>
+          </article>
+        )
+      ))}
+    </div>
+  </div>
+</section>
