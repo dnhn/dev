@@ -1,0 +1,46 @@
+---
+const skills = [
+  { name: "AWS", url: 'https://aws.amazon.com' },
+  { name: "Astro", url: 'https://astro.build' },
+  { name: "CSS", url: 'https://w3.org/Style/CSS' },
+  { name: "Cloudflare", url: 'https://cloudflare.com' },
+  { name: "Expo", url: 'https://expo.io' },
+  { name: "Figma", url: 'https://figma.com' },
+  { name: "GSAP", url: 'https://gsap.com' },
+  { name: "Git", url: 'https://git-scm.com' },
+  { name: "HTML", url: 'https://html.spec.whatwg.org/multipage' },
+  { name: "JavaScript", url: 'https://ecma-international.org/publications-and-standards/standards/ecma-262' },
+  { name: "MUI", url: 'https://mui.com' },
+  { name: "Motion", url: 'https://motion.dev' },
+  { name: "Netlify", url: 'https://netlify.com' },
+  { name: "Next.js", url: 'https://nextjs.org' },
+  { name: "Python", url: 'https://python.org' },
+  { name: "Radix UI", url: 'https://radix-ui.com' },
+  { name: "React Native", url: 'https://reactnative.dev' },
+  { name: "React", url: 'https://react.dev' },
+  { name: "shadcn/ui", url: 'https://ui.shadcn.com' },
+  { name: "Supabase", url: 'https://supabase.com' },
+  { name: "Tailwind CSS", url: 'https://tailwindcss.com' },
+  { name: "TypeScript", url: 'https://typescriptlang.org' },
+  { name: "Vercel", url: 'https://vercel.com' },
+  { name: "Vim", url: 'https://vim.org' },
+  { name: "Visual Studio Code", url: 'https://code.visualstudio.com' },
+  { name: "Vite", url: 'https://vite.dev' },
+  { name: "WebStorm", url: 'https://jetbrains.com/webstorm' },
+].sort(() => Math.random() - .5)
+---
+
+<section class="w-screen h-lvh shrink-0 flex items-center justify-center py-20 xl:py-48">
+  <div class="container max-w-[120ch] flex justify-center items-center flex-wrap gap-6 lg:gap-8 2xl:gap-12">
+    {skills.map(skill => (
+      <a
+        href={skill.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-xl font-medium sm:text-2xl 2xl:text-3xl"
+      >
+        {skill.name}
+      </a>
+    ))}
+  </div>
+</section>
