@@ -1,15 +1,16 @@
 ---
 import LinkedInIcon from '@/components/icons/linkedin-icon.astro'
 import GitHubIcon from '@/components/icons/github-icon.astro'
+import AtSymbol from '@/components/icons/at-symbol.astro'
 ---
 
 <footer class="w-screen h-lvh text-right text-xl">
   <div class="container py-8 pb-16 lg:pt-16 lg:pb-24">
     <div>
       <h3 class="group inline-block mb-2 font-bold">
-        <span class="opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 cursor-grab">👋🏼&nbsp;</span>
-        <span class="opacity-50 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity sm:opacity-20 cursor-grab">hey [at]</span>
-        <a href="https://nhan.dev">nhan.dev</a>
+        <span class="sr-only">Contact me at:</span>
+        <span class="opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 cursor-grab" aria-hidden="true">👋🏼&nbsp;</span>
+        <span class="opacity-50 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity sm:opacity-20 cursor-grab">hey<AtSymbol aria-label="at" class="inline size-5" /></span><a href="https://nhan.dev">nhan.dev</a>
       </h3>
       <p class="text-lg">Make the Web a better place</p>
     </div>
