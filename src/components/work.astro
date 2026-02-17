@@ -49,9 +49,9 @@ const projects = [
 ]
 ---
 
-<section class="w-screen h-lvh overflow-hidden flex items-center">
-  <div class="flex will-change-transform">
-    <div class="flex gap-16 px-16 will-change-transform">
+<section>
+  <div class="work-wrapper flex will-change-transform">
+    <div id="work-strip" class="work-strip px-8 flex gap-8 will-change-transform sm:px-32 sm:gap-16">
       {projects.map(project => (
         project.url ? (
           <a
@@ -87,3 +87,35 @@ const projects = [
     </div>
   </div>
 </section>
+
+<script>
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { scrollTimeline } from '@/src/scripts/gsap';
+
+const workWrapper = document.querySelector('.work-wrapper') as HTMLElement
+const workStrip = document.querySelector('.work-strip') as HTMLElement
+
+let stripWidth = workStrip.scrollWidth
+let scrollLength = stripWidth - window.innerWidth
+
+scrollTimeline.to(workStrip, {
+  x: -scrollLength,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: workWrapper,
+    pin: workWrapper,
+    scrub: true,
+    start: 'center center',
+    end: `+=${stripWidth * 3}`,
+    anticipatePin: 2,
+    invalidateOnRefresh: true,
+  }
+})
+
+ScrollTrigger.addEventListener('refresh', updateDimensions)
+
+function updateDimensions() {
+  stripWidth = workStrip.scrollWidth
+  scrollLength = stripWidth - window.innerWidth
+}
+</script>
