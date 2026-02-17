@@ -30,7 +30,7 @@ const skills = [
 ].sort(() => Math.random() - .5)
 ---
 
-<section class="w-screen h-lvh shrink-0 flex items-center justify-center py-20 xl:py-48">
+<section class="skills-wrapper h-svh flex items-center justify-center py-20 xl:py-48">
   <div class="container max-w-[120ch] flex justify-center items-center flex-wrap gap-6 lg:gap-8 2xl:gap-12">
     {skills.map(skill => (
       <a
@@ -44,3 +44,25 @@ const skills = [
     ))}
   </div>
 </section>
+
+<script>
+import { scrollTimeline } from '@/src/scripts/gsap';
+
+const skills = document.querySelectorAll('.skills-wrapper a')
+
+scrollTimeline.from('.skills-wrapper a', {
+  scrollTrigger: {
+    trigger: '.skills-wrapper',
+    pin: '.skills-wrapper',
+    start: 'center center',
+    end: `+=${skills.length * 50}%`,
+    scrub: true,
+  },
+  opacity: 0,
+  scale: 'random(1.5, 5)',
+  stagger: {
+    each: 0.1,
+    from: "random",
+  },
+})
+</script>
