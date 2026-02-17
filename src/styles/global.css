@@ -8,7 +8,7 @@
 
 @layer base {
   * {
-    @apply selection:bg-transparent selection:line-through;
+    @apply selection:bg-transparent selection:line-through focus-visible:outline-4 focus-visible:outline-dashed focus-visible:outline-offset-4 focus-visible:outline-current;
   }
 
   body {
