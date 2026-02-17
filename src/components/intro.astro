@@ -3,14 +3,41 @@
 
 <section class="intro h-svh py-20 md:py-32 lg:py-48 flex items-center justify-center">
   <div class="container space-y-8">
-    <h1 class="text-5xl/tight sm:text-6xl 2xl:text-7xl font-bold">Hey, I’m Nhan</h1>
-    <p class="text-xl/loose sm:text-2xl/relaxed 2xl:text-3xl/relaxed max-w-prose">
-      I’m a front-end developer focused on building thoughtful, user-centric products and making the Web a better place.
-      With expertise in Next.js, Astro, and React Native, I craft interfaces that balance aesthetic with meticulous attention to detail.
+    <h1 class="text-5xl/tight sm:text-6xl 2xl:text-7xl font-bold" style="visibility:hidden">
+      <span class="split">Hey, I’m</span>
+      <span class="name">
+        <span class="sr-only">Nhan!</span>
+        <span aria-hidden="true" class="bg bg-linear-45 from-cyan-300 via-indigo-500  to-blue-300 bg-clip-text text-transparent dark:from-lime-700 dark:via-yellow-300 dark:to-emerald-800">
+          Nhan!
+        </span>
+      </span>
+    </h1>
+    <p class="max-w-[50ch] text-xl leading-relaxed sm:text-2xl 2xl:text-3xl" style="visibility:hidden">
+      A front-end developer focused on building thoughtful, user-centric products and making the Web a better place.
+      With expertise in Next.js, Astro, and React Native, I craft accessible interfaces that balance aesthetic with meticulous attention to detail.
       I believe great user experience comes from caring about every interaction.
     </p>
   </div>
 </section>
+
+<style>
+h1 .bg {
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+</style>
 
 <script>
 import { SplitText } from 'gsap/SplitText';
