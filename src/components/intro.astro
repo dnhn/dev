@@ -1,7 +1,7 @@
 ---
 ---
 
-<section class="w-screen h-lvh shrink-0 py-20 md:py-32 lg:py-48 flex items-center justify-center">
+<section class="intro h-svh py-20 md:py-32 lg:py-48 flex items-center justify-center">
   <div class="container space-y-8">
     <h1 class="text-5xl/tight sm:text-6xl 2xl:text-7xl font-bold">Hey, I’m Nhan</h1>
     <p class="text-xl/loose sm:text-2xl/relaxed 2xl:text-3xl/relaxed max-w-prose">
@@ -11,3 +11,31 @@
     </p>
   </div>
 </section>
+
+<script>
+import { SplitText } from 'gsap/SplitText';
+import { scrollTimeline } from '@/src/scripts/gsap';
+
+const split = SplitText.create('.intro h1 .split', { type: 'words, chars' })
+const splitP = SplitText.create('.intro p', { type: 'lines, words' })
+
+scrollTimeline.set(['.intro h1', '.intro p'], { autoAlpha: 1 })
+
+scrollTimeline.from(split.chars, {
+  autoAlpha: 0,
+  opacity: 0,
+  yPercent: 'random(-100, -150)',
+  stagger: .1,
+  duration: .3,
+})
+.from('.intro h1 .name', {
+  opacity: 0,
+})
+.from(splitP.words, {
+  autoAlpha: 0,
+  opacity: 0,
+  xPercent: 20,
+  stagger: .1,
+  duration: .3,
+})
+</script>
