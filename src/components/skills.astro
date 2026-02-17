@@ -31,13 +31,13 @@ const skills = [
 ---
 
 <section class="skills-wrapper h-svh flex items-center justify-center py-20 xl:py-48">
-  <div class="container max-w-[120ch] flex justify-center items-center flex-wrap gap-6 lg:gap-8 2xl:gap-12">
+  <div class="container max-w-[60ch] flex justify-center items-center flex-wrap gap-6 text-xl sm:text-3xl sm:gap-8 2xl:gap-12 2xl:text-4xl">
     {skills.map(skill => (
       <a
         href={skill.url}
         target="_blank"
         rel="noopener noreferrer"
-        class="text-xl font-medium sm:text-2xl 2xl:text-3xl"
+        class="text-xl font-medium sm:text-3xl 2xl:text-4xl"
       >
         {skill.name}
       </a>
