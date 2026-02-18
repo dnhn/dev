@@ -51,42 +51,41 @@ const projects = [
 
 <section>
   <div class="work-wrapper flex will-change-transform">
-    <div id="work-strip" class="work-strip px-8 flex gap-8 will-change-transform sm:px-32 sm:gap-16">
+    <div class="work-strip px-12 flex gap-12 will-change-transform sm:px-32 sm:gap-16 lg:gap-32">
       {projects.map(project => (
-        project.url ? (
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-80 sm:w-96 aspect-square overflow-hidden cursor-pointer"
-          >
-            <article class="relative size-full">
-              <img
-                src={project.image}
-                alt={project.title}
-                class="size-full object-cover"
-              />
-              <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex items-end">
-                <h3 class="text-white text-2xl font-semibold p-6">{project.title}</h3>
-              </div>
-            </article>
-          </a>
-        ) : (
-          <article class="w-80 sm:w-96 aspect-square overflow-hidden relative">
-            <img
-              src={project.image}
-              alt={project.title}
-              class="size-full object-cover"
-            />
-            <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex items-end">
-              <h3 class="text-white text-2xl font-semibold p-6">{project.title}</h3>
-            </div>
-          </article>
-        )
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="squircle group relative aspect-2/3 rounded-4xl w-[75vw] overflow-hidden p-1 bg-linear-to-br from-black/10 to-black/60 sm:w-96 md:aspect-square lg:rounded-[3rem] dark:from-white/80 dark:to-white/30"
+        >
+          <img
+            src={project.image}
+            alt={project.title}
+            loading="lazy"
+            class="squircle size-full rounded-[1.8rem] bg-white lg:rounded-[2.75rem]"
+          />
+          <div class="squircle absolute inset-1 rounded-[1.8rem] flex items-center justify-center bg-linear-to-br from-black/30 to-black/60 text-white text-center transition-colors duration-500 lg:from-black/15 lg:rounded-[2.75rem] group-hover:bg-black/50 group-focus-visible:bg-black/50">
+            <h3 class="text-white text-2xl font-semibold p-6">{project.title}</h3>
+          </div>
+        </a>
       ))}
     </div>
   </div>
 </section>
+
+<style>
+.squircle {
+  @supports (corner-shape: squircle) {
+    corner-shape: squircle;
+    border-radius: 6rem;
+
+    @media (min-width: 48rem) {
+      border-radius: 12rem;
+    }
+  }
+}
+</style>
 
 <script>
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
