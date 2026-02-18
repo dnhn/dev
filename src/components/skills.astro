@@ -30,7 +30,7 @@ const skills = [
 ].sort(() => Math.random() - .5)
 ---
 
-<section class="skills-wrapper h-svh flex items-center justify-center py-20 xl:py-48">
+<section class="skills-wrapper flex items-center justify-center py-20 xl:py-48">
   <div class="container max-w-[60ch] flex justify-center items-center flex-wrap gap-6 text-xl sm:text-3xl sm:gap-8 2xl:gap-12 2xl:text-4xl">
     {skills.map(skill => (
       <a
@@ -55,7 +55,7 @@ scrollTimeline.from('.skills-wrapper a', {
     trigger: '.skills-wrapper',
     pin: '.skills-wrapper',
     start: 'center center',
-    end: `+=${skills.length * 50}%`,
+    end: `+=${skills.length * 10}%`,
     scrub: true,
   },
   opacity: 0,
