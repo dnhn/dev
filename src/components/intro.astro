@@ -1,11 +1,11 @@
 ---
 ---
 
-<section class="intro h-svh py-20 md:py-32 lg:py-48 flex items-center justify-center">
+<section class="intro h-svh py-20 flex items-center justify-center md:py-32 lg:py-48">
   <div class="container space-y-8">
     <h1 class="text-5xl/tight sm:text-6xl 2xl:text-7xl font-bold" style="visibility:hidden">
       <span class="split">Hey, I’m</span>
-      <span class="name">
+      <span class="name relative cursor-crosshair font-bold">
         <span class="sr-only">Nhan!</span>
         <span aria-hidden="true" class="bg bg-linear-45 from-cyan-300 via-indigo-500  to-blue-300 bg-clip-text text-transparent dark:from-lime-700 dark:via-yellow-300 dark:to-emerald-800">
           Nhan!
@@ -21,21 +21,15 @@
 </section>
 
 <style>
-h1 .bg {
+.bg {
   background-size: 200% 200%;
   animation: gradientShift 5s ease infinite;
 }
 
 @keyframes gradientShift {
-  0% {
-    background-position: 0 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
+  0% { background-position: 0 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
 }
 </style>
 
@@ -43,26 +37,32 @@ h1 .bg {
 import { SplitText } from 'gsap/SplitText';
 import { scrollTimeline } from '@/src/scripts/gsap';
 
-const split = SplitText.create('.intro h1 .split', { type: 'words, chars' })
-const splitP = SplitText.create('.intro p', { type: 'lines, words' })
+const split = SplitText.create('.intro h1 .split', {
+  type: 'words, chars',
+  autoSplit: true
+})
+const splitP = SplitText.create('.intro p', {
+  type: 'words, chars',
+  autoSplit: true
+})
 
 scrollTimeline.set(['.intro h1', '.intro p'], { autoAlpha: 1 })
-
-scrollTimeline.from(split.chars, {
-  autoAlpha: 0,
+.from(split.chars, {
   opacity: 0,
-  yPercent: 'random(-100, -150)',
+  xPercent: -100,
   stagger: .1,
   duration: .3,
 })
 .from('.intro h1 .name', {
   opacity: 0,
+  left: -50,
 })
-.from(splitP.words, {
-  autoAlpha: 0,
+.from(splitP.chars, {
   opacity: 0,
-  xPercent: 20,
-  stagger: .1,
-  duration: .3,
+  x: 10,
+  y: 10,
+  duration: .75,
+  stagger: .02,
+})
 })
 </script>
