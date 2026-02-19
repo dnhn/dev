@@ -30,7 +30,7 @@ const skills = [
 ].sort(() => Math.random() - .5)
 ---
 
-<section data-speed="1.25" class="skills-wrapper flex items-center justify-center py-20 xl:py-48">
+<section data-speed="1.5" class="skills-wrapper flex items-center justify-center py-20 xl:py-40">
   <div class="container max-w-[60ch] flex justify-center items-center flex-wrap gap-6 text-xl sm:text-3xl sm:gap-8 2xl:gap-12 2xl:text-4xl">
     {skills.map(skill => (
       <a
@@ -46,7 +46,7 @@ const skills = [
 </section>
 
 <script>
-import { scrollTimeline } from '@/src/scripts/gsap';
+import { scrollTimeline } from '@/src/scripts/gsap'
 
 const skills = document.querySelectorAll('.skills-wrapper a')
 

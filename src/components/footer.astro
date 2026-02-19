@@ -1,53 +1,76 @@
 ---
+import NhanDev from '@/components/nhan-dev.astro'
 import AtSymbol from '@/components/icons/at-symbol.astro'
 import GitHubIcon from '@/components/icons/github-icon.astro'
 import LinkedInIcon from '@/components/icons/linkedin-icon.astro'
 import SunRising from '@/components/icons/sun-rising.astro'
 ---
 
-<footer class="text-right text-xl">
-  <div class="container py-8 pb-16 lg:pt-16 lg:pb-24">
-    <div>
-      <div tabindex={0} class="group relative inline-block mb-2 font-bold">
+<footer class="min-h-svh">
+  <div class="container py-16 md:py-24 lg:py-36">
+    <NhanDev class="nhan-dev w-full h-auto aspect-[3.75]" />
+    <div data-lag=".125" class="mt-20 flex items-end justify-between gap-4 max-md:flex-col md:mt-32 md:gap-6">
+      <p class="text-xl md:max-w-[14ch] md:text-4xl/snug">Make the Web a better place <SunRising class="inline-block size-6 text-yellow-400 md:size-10 dark:text-[yellow]" /></p>
+      <div tabindex={0} class="group relative inline-block text-xl md:text-4xl">
         <span class="sr-only">Contact me:</span>
         <img
           src="/raised-hand.svg"
           alt=""
           class="absolute bottom-0 right-full mr-1 opacity-0 size-8 transition-[opacity,rotate] origin-[40%_70%] group-hover:opacity-100 group-focus:opacity-100 group-hover:-rotate-20 group-focus:-rotate-20"
-        />hey<AtSymbol aria-label="at" class="inline size-5" />nhan.dev
+        />hey<AtSymbol aria-label="at" class="inline size-5 md:size-8" />nhan.dev
       </div>
-      <p class="text-lg">Make the Web a better place <SunRising class="inline-block size-8 text-yellow-400 dark:text-[yellow]" /></p>
     </div>
-    <ul class="mt-6 flex items-center justify-end flex-wrap gap-4">
-      <li>
+    <div class="mt-30 flex justify-between items-end gap-6 max-md:flex-col md:mt-48 md:gap-8">
+      <ul data-lag=".25" class="flex items-center flex-wrap gap-4 max-md:justify-end">
+        <li class="size-11">
+          <a
+            href="https://github.com/dnhn"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block"
+          >
+            <GitHubIcon aria-label="GitHub" class="size-11" />
+          </a>
+        </li>
+        <li class="size-11">
+          <a
+            href="https://linkedin.com/in/dnhn"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block"
+          >
+            <LinkedInIcon aria-label="LinkedIn" class="size-11" />
+          </a>
+        </li>
+      </ul>
+      <p data-lag=".5" class="text-sm md:text-lg">
+        been fooling around since
         <a
-          href="https://github.com/dnhn"
+          href="https://en.wikipedia.org/wiki/2008"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-block"
-        >
-          <GitHubIcon aria-label="GitHub" class="size-11" />
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://linkedin.com/in/dnhn"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block"
-        >
-          <LinkedInIcon aria-label="LinkedIn" class="size-11" />
-        </a>
-      </li>
-    </ul>
-    <p class="mt-16 text-base">
-      been fooling around since
-      <a
-        href="https://en.wikipedia.org/wiki/2008"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="font-bold italic"
-      >2008</a>.
-    </p>
+          class="font-bold italic"
+        >2008</a>.
+      </p>
+    </div>
   </div>
 </footer>
+
+<script>
+import { gsap } from 'gsap'
+
+const paths = document.querySelectorAll('.nhan-dev path')
+
+gsap.timeline({
+  scrollTrigger: {
+    trigger: 'footer',
+    start: 'top 60%',
+    end: 'bottom bottom+=20%',
+    scrub: true
+  }
+})
+.from(paths[0], { drawSVG: 0, duration: 10 })
+.from(paths[1], { drawSVG: 0, duration: 4 })
+.from(paths[2], { drawSVG: 0, duration: 6 })
+
+</script>
