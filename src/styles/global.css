@@ -8,11 +8,11 @@
 
 @layer base {
   * {
-    @apply selection:bg-transparent selection:line-through focus-visible:outline-4 focus-visible:outline-dashed focus-visible:outline-offset-4 focus-visible:outline-current;
+    @apply selection:bg-transparent selection:line-through focus-visible:outline-4 focus-visible:outline-dashed focus-visible:outline-offset-4 focus-visible:outline-current focus-visible:rounded-xs;
   }
 
   body {
-    @apply antialiased font-serif;
+    @apply antialiased bg-orange-50 dark:bg-neutral-900;
   }
 }
 
