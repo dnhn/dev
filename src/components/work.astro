@@ -132,7 +132,17 @@ const workStrip = document.querySelector('.work-strip') as HTMLElement
 let stripWidth = workStrip.scrollWidth
 let scrollLength = stripWidth - window.innerWidth
 
-scrollTimeline.to(workStrip, {
+scrollTimeline.from('.work-wrapper article', {
+  opacity: 0,
+  xPercent: 200,
+  stagger: .05,
+  scrollTrigger: {
+    trigger: workWrapper,
+    start: 'top bottom',
+    scrub: true,
+  }
+})
+.to(workStrip, {
   x: -scrollLength,
   ease: 'none',
   scrollTrigger: {
@@ -143,6 +153,14 @@ scrollTimeline.to(workStrip, {
     end: `+=${stripWidth * .75}`,
     anticipatePin: 2,
     invalidateOnRefresh: true,
+  }
+})
+.to('.work-wrapper', {
+  opacity: 0,
+  scrollTrigger: {
+    trigger: workWrapper,
+    start: 'top top',
+    scrub: true,
   }
 })
 

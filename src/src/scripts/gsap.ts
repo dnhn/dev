@@ -6,9 +6,8 @@ import { SplitText } from 'gsap/SplitText'
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger, SplitText)
 
 export const smoother = ScrollSmoother.create({
-  wrapper: 'main',
-  content: '.smooth-content',
-  smooth: 1,
+  wrapper: 'body main',
+  content: 'body main .smooth-content',
   effects: true,
   normalizeScroll: true,
   ignoreMobileResize: true,

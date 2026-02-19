@@ -3,7 +3,7 @@
 
 <section class="intro h-svh py-20 flex items-center justify-center md:py-32 lg:py-48">
   <div class="container space-y-8">
-    <h1 class="text-5xl/tight sm:text-6xl 2xl:text-7xl font-bold" style="visibility:hidden">
+    <h1 data-speed="clamp(1.6)" class="text-5xl/tight font-light sm:text-6xl 2xl:text-7xl" style="visibility:hidden">
       <span class="split">Hey, I’m</span>
       <span class="name relative cursor-crosshair font-bold">
         <span class="sr-only">Nhan!</span>
@@ -12,7 +12,7 @@
         </span>
       </span>
     </h1>
-    <p class="max-w-[50ch] text-xl leading-relaxed sm:text-2xl 2xl:text-3xl" style="visibility:hidden">
+    <p data-speed="clamp(1.5)" class="max-w-[50ch] text-xl leading-relaxed sm:text-2xl 2xl:text-3xl" style="visibility:hidden">
       A front-end developer focused on building thoughtful, user-centric products and making the Web a better place.
       With expertise in Next.js, Astro, and React Native, I craft accessible interfaces that balance aesthetic with meticulous attention to detail.
       I believe great user experience comes from caring about every interaction.
@@ -64,5 +64,22 @@ scrollTimeline.set(['.intro h1', '.intro p'], { autoAlpha: 1 })
   duration: .75,
   stagger: .02,
 })
+.to('.intro h1', {
+  opacity: 0,
+  scrollTrigger: {
+    trigger: '.intro',
+    start: 'top top',
+    end: 'bottom 50%',
+    scrub: true,
+  }
+})
+.to('.intro p', {
+  opacity: 0,
+  scrollTrigger: {
+    trigger: '.intro',
+    start: 'top top',
+    end: 'bottom 50%',
+    scrub: true,
+  }
 })
 </script>

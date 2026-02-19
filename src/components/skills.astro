@@ -23,14 +23,14 @@ const skills = [
   { name: "Tailwind CSS", url: 'https://tailwindcss.com' },
   { name: "TypeScript", url: 'https://typescriptlang.org' },
   { name: "Vercel", url: 'https://vercel.com' },
-  { name: "Vim", url: 'https://vim.org' },
+  { name: "Vim", url: 'https://www.vim.org' },
   { name: "Visual Studio Code", url: 'https://code.visualstudio.com' },
   { name: "Vite", url: 'https://vite.dev' },
   { name: "WebStorm", url: 'https://jetbrains.com/webstorm' },
 ].sort(() => Math.random() - .5)
 ---
 
-<section class="skills-wrapper flex items-center justify-center py-20 xl:py-48">
+<section data-speed="1.25" class="skills-wrapper flex items-center justify-center py-20 xl:py-48">
   <div class="container max-w-[60ch] flex justify-center items-center flex-wrap gap-6 text-xl sm:text-3xl sm:gap-8 2xl:gap-12 2xl:text-4xl">
     {skills.map(skill => (
       <a
@@ -50,19 +50,29 @@ import { scrollTimeline } from '@/src/scripts/gsap';
 
 const skills = document.querySelectorAll('.skills-wrapper a')
 
-scrollTimeline.from('.skills-wrapper a', {
+scrollTimeline.from(skills, {
+  opacity: 0,
+  scale: 'random(1.5, 5)',
+  stagger: {
+    each: .1,
+    from: "random",
+  },
   scrollTrigger: {
     trigger: '.skills-wrapper',
     pin: '.skills-wrapper',
     start: 'center center',
     end: `+=${skills.length * 10}%`,
-    scrub: true,
-  },
+    scrub: true
+  }
+})
+.to('.skills-wrapper', {
   opacity: 0,
-  scale: 'random(1.5, 5)',
-  stagger: {
-    each: 0.1,
-    from: "random",
-  },
+  scaleY: 1.15,
+  scrollTrigger: {
+    trigger: '.skills-wrapper',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: true
+  }
 })
 </script>
