@@ -1,5 +1,12 @@
 ---
-const projects = [
+const projects: {
+  title: string
+  image: string
+  links: {
+    label?: string
+    url: string
+  }[]
+}[] = [
   {
     title: 'Spendful',
     image: '',
@@ -65,14 +72,16 @@ const projects = [
     <div class="work-strip px-12 flex gap-12 will-change-transform sm:px-32 sm:gap-16 lg:gap-32">
       {projects.map(project => (
         <article class="squircle group relative aspect-2/3 rounded-4xl w-[75vw] overflow-hidden p-1 bg-linear-to-br from-black/10 to-black/60 sm:w-96 md:aspect-square lg:rounded-[3rem] dark:from-white/80 dark:to-white/30">
-          <img
-            src={project.image}
-            alt={project.title}
-            loading="lazy"
-            class="squircle size-full object-cover rounded-[1.8rem] bg-white lg:rounded-[2.75rem]"
-          />
+          {project.image && (
+            <img
+              src={project.image}
+              alt=""
+              loading="lazy"
+              class="squircle size-full object-cover rounded-[1.8rem] bg-white lg:rounded-[2.75rem]"
+            />
+          )}
           <div class="squircle absolute inset-1 rounded-[1.8rem] p-6 flex flex-col items-center justify-center gap-1 bg-linear-to-br from-black/30 to-black/60 text-white text-center transition-colors duration-500 lg:from-black/15 lg:rounded-[2.75rem] group-hover:bg-black/50 group-focus-within:bg-black/50">
-            <h3 class="text-white text-2xl font-semibold">{project.title}</h3>
+            <div class="text-white text-2xl font-light text-shadow-1px">{project.title}</div>
             {project.links.length > 0 && (
               <ul class="flex flex-wrap items-center justify-center">
                 {project.links.map(link => (
@@ -81,9 +90,9 @@ const projects = [
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-block p-3 text-sm font-medium"
+                      class="inline-block p-3 text-sm font-medium text-shadow-1px underline-offset-2 hover:underline"
                     >
-                      {link.label || new URL(link.url).hostname || link.url}
+                      {link.label || new URL(link.url).hostname}
                     </a>
                   </li>
                 ))}
@@ -97,6 +106,10 @@ const projects = [
 </section>
 
 <style>
+.text-shadow-1px {
+  text-shadow: 1px 1px black;
+}
+
 .squircle {
   @supports (corner-shape: squircle) {
     corner-shape: squircle;
