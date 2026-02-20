@@ -12,7 +12,16 @@ import SunRising from '@/components/icons/sun-rising.astro'
       <NhanDev class="w-full h-auto aspect-[3.75]" />
     </button>
     <div data-lag=".125" class="mt-20 flex items-end justify-between gap-4 max-md:flex-col md:mt-32 md:gap-6">
-      <p class="text-xl md:max-w-[14ch] md:text-4xl/snug">Make the Web a better place <SunRising class="inline-block size-6 text-yellow-400 md:size-10 dark:text-[yellow]" /></p>
+      <p class="text-xl md:max-w-[14ch] md:text-4xl/snug">
+        Make the
+        <a
+          href="https://home.cern/science/computing/birth-web"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline-offset-2 max-lg:underline hover:underline"
+        >Web</a>
+        a better place <SunRising class="inline-block size-6 text-yellow-400 md:size-10 dark:text-[yellow]" />
+      </p>
       <div tabindex={0} class="group relative inline-block text-xl md:text-4xl">
         <span class="sr-only">Contact me:</span>
         <img
@@ -46,7 +55,7 @@ import SunRising from '@/components/icons/sun-rising.astro'
         </li>
       </ul>
       <p data-lag=".5" class="text-sm md:text-lg">
-        been fooling around since
+        messing with the Web since
         <a
           href="https://en.wikipedia.org/wiki/2008"
           target="_blank"
