@@ -124,11 +124,10 @@ const projects: {
 
 <script>
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { scrollTimeline } from '@/src/scripts/gsap';
+import { scrollTimeline } from '@/scripts/gsap'
 
 const workWrapper = document.querySelector('.work-wrapper') as HTMLElement
 const workStrip = document.querySelector('.work-strip') as HTMLElement
-
 let stripWidth = workStrip.scrollWidth
 let scrollLength = stripWidth - window.innerWidth
 
