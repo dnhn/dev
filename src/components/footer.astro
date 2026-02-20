@@ -8,7 +8,9 @@ import SunRising from '@/components/icons/sun-rising.astro'
 
 <footer class="min-h-svh">
   <div class="container py-16 md:py-24 lg:py-36">
-    <NhanDev class="nhan-dev w-full h-auto aspect-[3.75]" />
+    <button type="button" aria-label="The drawing, click to replay" class="nhan-dev">
+      <NhanDev class="w-full h-auto aspect-[3.75]" />
+    </button>
     <div data-lag=".125" class="mt-20 flex items-end justify-between gap-4 max-md:flex-col md:mt-32 md:gap-6">
       <p class="text-xl md:max-w-[14ch] md:text-4xl/snug">Make the Web a better place <SunRising class="inline-block size-6 text-yellow-400 md:size-10 dark:text-[yellow]" /></p>
       <div tabindex={0} class="group relative inline-block text-xl md:text-4xl">
@@ -60,8 +62,7 @@ import SunRising from '@/components/icons/sun-rising.astro'
 import { gsap } from 'gsap'
 
 const paths = document.querySelectorAll('.nhan-dev path')
-
-gsap.timeline({
+const draw = gsap.timeline({
   scrollTrigger: {
     trigger: 'footer',
     start: 'top center'
@@ -70,4 +71,8 @@ gsap.timeline({
 .from(paths[0], { drawSVG: 0, duration: 3 })
 .from(paths[1], { drawSVG: 0, duration: 1 })
 .from(paths[2], { drawSVG: 0, duration: 2 })
+
+document.getElementsByClassName('nhan-dev')[0].addEventListener('click', function () {
+  if (!draw.isActive()) draw.restart()
+})
 </script>
