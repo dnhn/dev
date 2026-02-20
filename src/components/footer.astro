@@ -11,7 +11,7 @@ import SunRising from '@/components/icons/sun-rising.astro'
     <button type="button" aria-label="The drawing, click to replay" class="nhan-dev">
       <NhanDev class="w-full h-auto aspect-[3.75]" />
     </button>
-    <div data-lag=".125" class="mt-20 flex items-end justify-between gap-4 max-md:flex-col md:mt-32 md:gap-6">
+    <div data-lag=".125" class="mt-20 items-end justify-between gap-6 md:mt-32 md:flex">
       <p class="text-xl md:max-w-[14ch] md:text-4xl/snug">
         Make the
         <a
@@ -20,18 +20,19 @@ import SunRising from '@/components/icons/sun-rising.astro'
           rel="noopener noreferrer"
           class="underline-offset-2 max-lg:underline hover:underline"
         >Web</a>
-        a better place <SunRising class="inline-block size-6 text-yellow-400 md:size-10 dark:text-[yellow]" />
+        a better place <SunRising class="inline-block size-8 text-yellow-400 md:size-12 dark:text-[yellow]" />
       </p>
-      <div tabindex={0} class="group relative inline-block text-xl md:text-4xl">
+      <div tabindex={0} class="group relative inline-block text-xl cursor-grab max-md:mt-4 md:text-4xl">
         <span class="sr-only">Contact me:</span>
         <img
           src="/raised-hand.svg"
           alt=""
-          class="absolute bottom-0 right-full mr-1 opacity-0 size-8 transition-[opacity,rotate] origin-[40%_70%] md:size-12 group-hover:opacity-100 group-focus:opacity-100 group-hover:-rotate-20 group-focus:-rotate-20"
+          aria-hidden="true"
+          class="absolute bottom-0 max-md:left-full md:right-full ml-2 mr-1 opacity-0 size-8 transition-[opacity,rotate] origin-[40%_70%] md:size-12 group-hover:opacity-100 group-focus:opacity-100 group-hover:-rotate-20 group-focus:-rotate-20"
         />hey<AtSymbol aria-label="at" class="inline size-5 md:size-8" />nhan.dev
       </div>
     </div>
-    <div class="mt-30 flex justify-between items-end gap-6 max-md:flex-col md:mt-48 md:gap-8">
+    <div class="mt-30 justify-between items-end gap-8 md:mt-48 md:flex">
       <ul data-lag=".25" class="flex items-center flex-wrap gap-4 max-md:justify-end">
         <li class="size-11">
           <a
@@ -54,7 +55,7 @@ import SunRising from '@/components/icons/sun-rising.astro'
           </a>
         </li>
       </ul>
-      <p data-lag=".5" class="text-sm md:text-lg">
+      <p data-lag=".5" class="text-sm max-md:mt-6 max-md:text-right md:text-lg">
         messing with the Web since
         <a
           href="https://en.wikipedia.org/wiki/2008"
