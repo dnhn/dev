@@ -123,6 +123,7 @@ const projects: {
 </style>
 
 <script>
+import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { scrollTimeline } from '@/scripts/gsap'
 
@@ -131,18 +132,25 @@ const workStrip = document.querySelector('.work-strip') as HTMLElement
 let stripWidth = workStrip.scrollWidth
 let scrollLength = stripWidth - window.innerWidth
 
-scrollTimeline.from('.work-wrapper article', {
+gsap.fromTo('.work-wrapper article', {
   opacity: 0,
-  yPercent: 50,
-  stagger: .1,
+  yPercent: 'random(0, 20)',
+  rotate: 'random(-20, 20)',
+}, {
+  opacity: 1,
+  yPercent: 'random(-10, 10)',
+  rotate: 'random(-6, 6)',
+  stagger: .2,
   ease: 'none',
   scrollTrigger: {
     trigger: workWrapper,
     start: 'top bottom',
+    end: `+=${stripWidth * .75}`,
     scrub: true,
   }
 })
-.to(workStrip, {
+
+scrollTimeline.to(workStrip, {
   x: () => -scrollLength,
   ease: 'none',
   scrollTrigger: {
@@ -155,7 +163,7 @@ scrollTimeline.from('.work-wrapper article', {
     invalidateOnRefresh: true
   }
 })
-.to('.work-wrapper', {
+.to(workWrapper, {
   opacity: 0,
   yPercent: -50,
   ease: 'none',
