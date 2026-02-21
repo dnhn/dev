@@ -82,9 +82,9 @@ const draw = gsap.timeline({
     start: 'top center'
   }
 })
-.from(paths[0], { drawSVG: 0, duration: 3 })
-.from(paths[1], { drawSVG: 0, duration: 1 })
-.from(paths[2], { drawSVG: 0, duration: 2 })
+.from(paths[0], { drawSVG: 0, duration: 3, ease: 'none' })
+.from(paths[1], { drawSVG: 0, duration: 1, ease: 'none' })
+.from(paths[2], { drawSVG: 0, duration: 2, ease: 'none' })
 
 document.getElementsByClassName('nhan-dev')[0].addEventListener('click', function () {
   if (!draw.isActive()) draw.restart()
