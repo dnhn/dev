@@ -54,6 +54,7 @@ scrollTimeline.from(skills, {
   opacity: .25,
   scale: 'random(1.5, 5)',
   rotate: 'random(-45, 45)',
+  ease: 'none',
   stagger: {
     each: .1,
     from: 'random'
@@ -70,6 +71,7 @@ scrollTimeline.from(skills, {
   opacity: 0,
   yPercent: -20,
   scaleY: 1.15,
+  ease: 'none',
   scrollTrigger: {
     trigger: '.skills-wrapper',
     start: 'top top',

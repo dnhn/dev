@@ -135,6 +135,7 @@ scrollTimeline.from('.work-wrapper article', {
   opacity: 0,
   yPercent: 50,
   stagger: .1,
+  ease: 'none',
   scrollTrigger: {
     trigger: workWrapper,
     start: 'top bottom',
@@ -156,6 +157,8 @@ scrollTimeline.from('.work-wrapper article', {
 })
 .to('.work-wrapper', {
   opacity: 0,
+  yPercent: -50,
+  ease: 'none',
   scrollTrigger: {
     trigger: workWrapper,
     start: 'top top',
