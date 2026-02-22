@@ -63,19 +63,7 @@ scrollTimeline.from(skills, {
     trigger: '.skills-wrapper',
     pin: '.skills-wrapper',
     start: 'center center',
-    end: `+=${skills.length * 10}%`,
-    scrub: true
-  }
-})
-.to('.skills-wrapper', {
-  opacity: 0,
-  yPercent: -20,
-  scaleY: 1.15,
-  ease: 'none',
-  scrollTrigger: {
-    trigger: '.skills-wrapper',
-    start: 'top top',
-    end: 'bottom top',
+    end: `+=${skills.length * 75}`,
     scrub: true
   }
 })

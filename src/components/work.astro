@@ -67,9 +67,9 @@ const list: {
 ]
 ---
 
-<section>
-  <div class="work-wrapper flex will-change-transform">
-    <div class="work-strip px-12 flex gap-20 will-change-transform sm:px-32 xl:gap-32">
+<section class="relative overflow-x-hidden">
+  <div class="work-wrapper relative flex flex-nowrap will-change-transform">
+    <div class="work-strip relative p-12 flex flex-nowrap gap-20 will-change-transform sm:px-32 xl:gap-32">
       {list.map(work => (
         <article class="squircle group relative aspect-2/3 rounded-4xl w-[75vw] overflow-hidden p-1 bg-linear-to-br from-black/10 to-black/60 sm:w-[50vw] lg:w-md lg:aspect-square lg:rounded-[3rem] dark:from-white/80 dark:to-white/30">
           {work.image.src && (
@@ -154,7 +154,7 @@ scrollTimeline.to(workStrip, {
     pin: workWrapper,
     scrub: true,
     start: 'center center',
-    end: `+=${stripWidth * .75}`,
+    end: () => `+=${stripWidth * .75}`,
     anticipatePin: 2,
     invalidateOnRefresh: true
   }
