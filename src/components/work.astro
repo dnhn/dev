@@ -1,65 +1,65 @@
 ---
-const projects: {
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
+import ImgSpendful from '@/assets/spendful.png'
+import ImgLF from '@/assets/lfapp.png'
+import ImgWager from '@/assets/wager.png'
+import ImgGF from '@/assets/gfood.png'
+import ImgDanskOff from '@/assets/danskoff.png'
+import ImgFMuseum from '@/assets/fmuseum.png'
+import ImgImg5 from '@/assets/img5.png'
+
+const list: {
   title: string
-  image: string
-  links: {
-    label?: string
-    url: string
-  }[]
+  image: ImageMetadata
+  links: { label?: string; url: string }[]
 }[] = [
   {
     title: 'Spendful',
-    image: '',
+    image: ImgSpendful,
     links: [
       { label: 'iOS', url: 'https://apps.apple.com/app/id6757114071' }
     ]
   },
   {
     title: 'LongF',
-    image: '',
+    image: ImgLF,
     links: [
       { label: 'Android', url: 'https://play.google.com/store/apps/details?id=com.vietlong.longf' },
       { label: 'iOS', url: 'https://apps.apple.com/app/id6751319696' }
     ]
   },
   {
-    title: 'GrabFood',
-    image: '',
-    links: [
-      { url: 'https://food.grab.com' }
-    ]
-  },
-  {
     title: 'Wager API',
-    image: '',
+    image: ImgWager,
     links: [
       { url: 'https://wagerapi.com' }
     ]
   },
   {
-    title: 'Image Maker',
-    image: '',
+    title: 'GrabFood',
+    image: ImgGF,
     links: [
-      { url: 'https://vinamilk.nhan.dev' }
+      { url: 'https://food.grab.com' }
     ]
   },
   {
     title: 'Dansk Offshore',
-    image: '',
+    image: ImgDanskOff,
     links: [
       { url: 'https://danskoffshore.dk' }
     ]
   },
   {
     title: 'Frederiksberg Museerne',
-    image: '',
+    image: ImgFMuseum,
     links: [
       { url: 'https://frederiksbergmuseerne.dk' }
     ]
   },
   {
     title: 'Imagine5',
-    image: '',
+    image: ImgImg5,
     links: [
       { url: 'https://imagine5.com' }
     ]
@@ -70,21 +70,21 @@ const projects: {
 <section>
   <div class="work-wrapper flex will-change-transform">
     <div class="work-strip px-12 flex gap-12 will-change-transform sm:px-32 sm:gap-16 lg:gap-32">
-      {projects.map(project => (
+      {list.map(work => (
         <article class="squircle group relative aspect-2/3 rounded-4xl w-[75vw] overflow-hidden p-1 bg-linear-to-br from-black/10 to-black/60 sm:w-[33vw] lg:w-md lg:aspect-square lg:rounded-[3rem] dark:from-white/80 dark:to-white/30">
-          {project.image && (
-            <img
-              src={project.image}
+          {work.image.src && (
+            <Image
+              src={work.image}
               alt=""
-              loading="lazy"
+              widths={[300, 600, work.image.width]}
               class="squircle size-full object-cover rounded-[1.8rem] bg-white lg:rounded-[2.75rem]"
             />
           )}
           <div class="squircle absolute inset-1 rounded-[1.8rem] p-6 flex flex-col items-center justify-center gap-1 bg-linear-to-br from-black/30 to-black/60 text-white text-center transition-colors duration-500 lg:from-black/15 lg:rounded-[2.75rem] group-hover:bg-black/50 group-focus-within:bg-black/50">
-            <div class="text-white text-2xl font-light text-shadow-1px">{project.title}</div>
-            {project.links.length > 0 && (
+            <div class="text-white text-2xl font-light text-shadow-1px">{work.title}</div>
+            {work.links.length > 0 && (
               <ul class="flex flex-wrap items-center justify-center">
-                {project.links.map(link => (
+                {work.links.map(link => (
                   <li>
                     <a
                       href={link.url}
@@ -145,7 +145,7 @@ gsap.fromTo('.work-wrapper article', {
   scrollTrigger: {
     trigger: workWrapper,
     start: 'top bottom',
-    end: `+=${stripWidth * .75}`,
+    end: `+=${stripWidth * .6}`,
     scrub: true,
   }
 })
