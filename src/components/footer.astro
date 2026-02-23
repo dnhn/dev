@@ -80,14 +80,18 @@ const paths = document.querySelectorAll('.nhan-dev path')
 const draw = gsap.timeline({
   scrollTrigger: {
     trigger: 'footer',
-    start: 'top center'
-  }
+    start: 'top center',
+  },
+  defaults: {
+    drawSVG: 0,
+    ease: 'none',
+  },
 })
-.from(paths[0], { drawSVG: 0, duration: 3, ease: 'none' })
-.from(paths[1], { drawSVG: 0, duration: 1, ease: 'none' })
-.from(paths[2], { drawSVG: 0, duration: 2, ease: 'none' })
+.from(paths[0], { duration: 3 })
+.from(paths[1], { duration: 1 })
+.from(paths[2], { duration: 2 })
 
-document.getElementsByClassName('nhan-dev')[0].addEventListener('click', function () {
+document.querySelector('.nhan-dev')!.addEventListener('click', function () {
   if (!draw.isActive()) draw.restart()
 })
 </script>
