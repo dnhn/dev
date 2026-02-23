@@ -12,8 +12,11 @@ import SunRising from '@/components/icons/sun-rising.astro'
 
 <footer class="min-h-svh">
   <div class="container py-16 md:py-24 lg:py-36">
-    <button type="button" aria-label="The drawing, click to replay" class="nhan-dev">
+    <button type="button" aria-label="The drawing, click to replay" class="nhan-dev group relative cursor-none">
       <NhanDev class="w-full h-auto aspect-[3.75]" />
+      <span class="indicator absolute top-0 left-0 opacity-0 size-20 pointer-events-none transition-opacity group-hover:opacity-100">
+        <img src="/sparkles.svg" alt="" class="size-full" />
+      </span>
     </button>
     <div data-lag=".125" class="mt-20 items-end justify-between gap-6 md:mt-32 md:flex">
       <p class="text-xl md:max-w-[14ch] md:text-4xl/snug">
@@ -79,6 +82,7 @@ import SunRising from '@/components/icons/sun-rising.astro'
 import { gsap } from 'gsap'
 
 const nd = document.querySelector('.nhan-dev') as HTMLElement
+const indicator = nd.querySelector('.indicator') as HTMLElement
 const paths = nd.querySelectorAll('path')
 const draw = gsap.timeline({
   defaults: { drawSVG: 0, ease: 'none' },
@@ -101,6 +105,8 @@ const drawBlank = gsap.timeline({
 .to(paths[1], { duration: .375 })
 .to(paths[2], { duration: .625 })
 
+gsap.set(indicator, { xPercent: -50, yPercent: -50 })
+
 nd.addEventListener('click', function () {
   if (draw.isActive() || drawBlank.isActive()) return
   if (draw.progress() === 1) {
@@ -109,5 +115,15 @@ nd.addEventListener('click', function () {
       draw.restart()
     })
   }
+})
+
+const xTo = gsap.quickTo(indicator, 'x', {duration: .6, ease: 'power4'})
+const yTo = gsap.quickTo(indicator, 'y', {duration: .6, ease: 'power4'})
+
+window.addEventListener('mousemove', function (e) {
+  const { left, top } = nd.getBoundingClientRect()
+
+  xTo(e.clientX - left)
+  yTo(e.clientY - top)
 })
 </script>

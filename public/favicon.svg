@@ -1,12 +1,5 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="512" height="512"/>
 <path d="M34 288C39.5 273.5 62.5 255.046 81 259.5C135 272.5 111.5 410 110.5 441.5C115.5 410.5 133.546 248.943 188 246.5C266 243 218.5 386 267.5 435C316.5 484 402 458 422 344.5C432.692 283.821 390.404 269.2 368 268C340 266.5 304.4 281.5 299.5 330.5C292 405.5 406.5 463.5 451.5 417C499.138 367.774 473 163.5 457 53" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
-<style>
-rect { fill: #fff; }
-path { stroke: #000; }
-@media (prefers-color-scheme: dark) {
-    rect { fill: #000; }
-    path { stroke: #fff; }
-}
-</style>
+<style>rect { fill: #fff; } path { stroke: #000; } @media (prefers-color-scheme: dark) { rect { fill: #000; } path { stroke: #fff; } }</style>
 </svg>
