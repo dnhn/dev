@@ -1,76 +1,12 @@
 ---
-import type { ImageMetadata } from 'astro'
 import { Image } from 'astro:assets'
-import ImgSpendful from '@/assets/spendful.png'
-import ImgLF from '@/assets/lfapp.png'
-import ImgWager from '@/assets/wager.png'
-import ImgGF from '@/assets/gfood.png'
-import ImgDanskOff from '@/assets/danskoff.png'
-import ImgFMuseum from '@/assets/fmuseum.png'
-import ImgImg5 from '@/assets/img5.png'
-
-const list: {
-  title: string
-  image: ImageMetadata
-  links: { label?: string; url: string }[]
-}[] = [
-  {
-    title: 'Spendful',
-    image: ImgSpendful,
-    links: [
-      { label: 'iOS', url: 'https://apps.apple.com/app/id6757114071' }
-    ]
-  },
-  {
-    title: 'LongF',
-    image: ImgLF,
-    links: [
-      { label: 'Android', url: 'https://play.google.com/store/apps/details?id=com.vietlong.longf' },
-      { label: 'iOS', url: 'https://apps.apple.com/app/id6751319696' }
-    ]
-  },
-  {
-    title: 'Wager API',
-    image: ImgWager,
-    links: [
-      { url: 'https://wagerapi.com' }
-    ]
-  },
-  {
-    title: 'GrabFood',
-    image: ImgGF,
-    links: [
-      { url: 'https://food.grab.com' }
-    ]
-  },
-  {
-    title: 'Dansk Offshore',
-    image: ImgDanskOff,
-    links: [
-      { url: 'https://danskoffshore.dk' }
-    ]
-  },
-  {
-    title: 'Frederiksberg Museerne',
-    image: ImgFMuseum,
-    links: [
-      { url: 'https://frederiksbergmuseerne.dk' }
-    ]
-  },
-  {
-    title: 'Imagine5',
-    image: ImgImg5,
-    links: [
-      { url: 'https://imagine5.com' }
-    ]
-  },
-]
+import { WORKS } from '@/scripts/data'
 ---
 
 <section class="relative overflow-x-hidden">
   <div class="work-wrapper relative flex-nowrap will-change-transform motion-safe:flex">
     <div class="work-strip relative p-12 flex flex-nowrap gap-20 will-change-transform sm:px-32 xl:gap-32 motion-reduce:flex-wrap motion-reduce:justify-center">
-      {list.map(work => (
+      {WORKS.map(work => (
         <article class="squircle group relative aspect-2/3 rounded-4xl w-[75vw] overflow-hidden p-1 bg-linear-to-br from-black/10 to-black/60 sm:w-[50vw] lg:w-md lg:aspect-square lg:rounded-[3rem] dark:from-white/80 dark:to-white/30">
           {work.image.src && (
             <Image
