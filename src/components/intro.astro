@@ -1,9 +1,9 @@
 ---
-import SloganCircle from '@/components/slogan-circle.astro'
+import SloganCircle from 'src/components/slogan-circle.svelte'
 ---
 
-<SloganCircle position={0} />
-<SloganCircle position={1} />
+<SloganCircle client:only="svelte" position={0} />
+<SloganCircle client:only="svelte" position={1} />
 
 <section class="intro min-h-svh py-16 items-center justify-center md:py-32 lg:py-48 lg:flex">
   <div class="container gap-12 lg:flex xl:gap-16">
