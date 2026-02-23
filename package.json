@@ -11,10 +11,13 @@
   "dependencies": {
     "astro": "^5.17",
     "gsap": "^3.14.2",
+    "svelte": "^5.53.2",
     "tailwindcss": "^4.2"
   },
   "devDependencies": {
+    "@astrojs/svelte": "^7.2.5",
     "@tailwindcss/vite": "^4.2",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "typescript": "^5.9.3"
   }
 }
