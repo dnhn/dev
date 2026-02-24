@@ -13,5 +13,3 @@ export const smoother = ScrollSmoother.create({
   normalizeScroll: true,
   ignoreMobileResize: true
 })
-
-export const scrollTimeline = gsap.timeline()

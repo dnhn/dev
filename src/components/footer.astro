@@ -12,9 +12,9 @@ import SunRising from '@/components/icons/sun-rising.astro'
 
 <footer class="min-h-svh">
   <div class="container py-16 md:py-24 lg:py-36">
-    <button type="button" aria-label="The drawing, click to replay" class="nhan-dev group relative cursor-none">
+    <button type="button" aria-label="The drawing" class="nhan-dev group relative cursor-none">
       <NhanDev class="w-full h-auto aspect-[3.75]" />
-      <span class="indicator absolute top-0 left-0 opacity-0 size-20 pointer-events-none transition-opacity group-hover:opacity-100">
+      <span aria-hidden="true" class="indicator absolute top-0 left-0 opacity-0 size-16 pointer-events-none transition-opacity group-hover:opacity-100">
         <img src="/sparkles.svg" alt="" class="size-full" />
       </span>
     </button>
@@ -80,6 +80,7 @@ import SunRising from '@/components/icons/sun-rising.astro'
 
 <script>
 import { gsap } from 'gsap'
+import '@/scripts/gsap'
 
 const nd = document.querySelector('.nhan-dev') as HTMLElement
 const indicator = nd.querySelector('.indicator') as HTMLElement
@@ -117,8 +118,8 @@ nd.addEventListener('click', function () {
   }
 })
 
-const xTo = gsap.quickTo(indicator, 'x', {duration: .6, ease: 'power4'})
-const yTo = gsap.quickTo(indicator, 'y', {duration: .6, ease: 'power4'})
+const xTo = gsap.quickTo(indicator, 'x', { duration: .5, ease: 'power4' })
+const yTo = gsap.quickTo(indicator, 'y', { duration: .5, ease: 'power4' })
 
 window.addEventListener('mousemove', function (e) {
   const { left, top } = nd.getBoundingClientRect()

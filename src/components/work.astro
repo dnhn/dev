@@ -56,8 +56,8 @@ import { WORKS } from '@/scripts/data'
 
 <script>
 import { gsap } from 'gsap'
+import '@/scripts/gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { scrollTimeline } from '@/scripts/gsap'
 
 const workWrapper = document.querySelector('.work-wrapper') as HTMLElement
 const workStrip = document.querySelector('.work-strip') as HTMLElement
@@ -84,7 +84,7 @@ matchMedia.add('(prefers-reduced-motion: no-preference)', () => {
     },
   })
 
-  scrollTimeline.to(workStrip, {
+  gsap.to(workStrip, {
     x: () => -scrollLength,
     ease: 'none',
     scrollTrigger: {
@@ -97,7 +97,8 @@ matchMedia.add('(prefers-reduced-motion: no-preference)', () => {
       invalidateOnRefresh: true,
     },
   })
-  .to(workWrapper, {
+
+  gsap.to(workWrapper, {
     opacity: 0,
     yPercent: -50,
     ease: 'none',

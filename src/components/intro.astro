@@ -47,8 +47,8 @@ import SloganCircle from 'src/components/slogan-circle.svelte'
 
 <script>
 import { gsap } from 'gsap'
+import '@/scripts/gsap'
 import { SplitText } from 'gsap/SplitText'
-import { scrollTimeline } from '@/scripts/gsap'
 
 const split = SplitText.create('.intro h1 .split', {
   type: 'words, chars',
@@ -59,12 +59,12 @@ const splitP = SplitText.create('.intro p', {
   autoSplit: true
 })
 
-scrollTimeline.set(['.intro h1', '.intro p'], { autoAlpha: 1 })
+gsap.set(['.intro h1', '.intro p'], { autoAlpha: 1 })
 
 const matchMedia = gsap.matchMedia('.intro')
 
 matchMedia.add('(prefers-reduced-motion: no-preference)', () => {
-  scrollTimeline.from(split.chars, {
+  gsap.timeline().from(split.chars, {
     display: 'none',
     delay: .25,
     stagger: .2,
@@ -80,20 +80,10 @@ matchMedia.add('(prefers-reduced-motion: no-preference)', () => {
     stagger: .02,
     ease: 'none',
   })
-  .to(['.intro h1', '.intro p'], {
-    opacity: 0,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.intro',
-      start: 'top top',
-      end: 'bottom 50%',
-      scrub: true,
-    },
-  })
 })
 
 matchMedia.add('(prefers-reduced-motion: reduce)', () => {
-  scrollTimeline.from(split.chars, {
+  gsap.timeline().from(split.chars, {
     opacity: 0,
     stagger: .2,
   })
