@@ -109,8 +109,7 @@ matchMedia.add('(prefers-reduced-motion: no-preference)', () => {
     },
   })
 })
-
-matchMedia.add('(prefers-reduced-motion: reduce)', () => {
+.add('(prefers-reduced-motion: reduce)', () => {
   gsap.fromTo('.work-wrapper article', {
     opacity: 0,
   }, {

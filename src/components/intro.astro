@@ -81,8 +81,7 @@ matchMedia.add('(prefers-reduced-motion: no-preference)', () => {
     ease: 'none',
   })
 })
-
-matchMedia.add('(prefers-reduced-motion: reduce)', () => {
+.add('(prefers-reduced-motion: reduce)', () => {
   gsap.timeline().from(split.chars, {
     opacity: 0,
     stagger: .2,
@@ -100,8 +99,22 @@ matchMedia.add('(prefers-reduced-motion: reduce)', () => {
 // https://freesound.org/s/241809
 const nameAudio = new Audio('/sounds/241809_4404552-lq.mp3')
 
-document.querySelector('h1 .name')!.addEventListener('click', function () {
+document.querySelector('.intro h1 .name')!.addEventListener('click', function () {
   nameAudio.currentTime = 0
   nameAudio.play()
+
+  gsap.fromTo('.intro h1 .name', {
+    scaleY: 1,
+    scaleX: 1,
+    fontWeight: 700,
+  }, {
+    scaleY: 1.2,
+    scaleX: 1.5,
+    fontWeight: 100,
+    duration: .2,
+    ease: 'sine.out',
+    yoyo: true,
+    repeat: 1,
+  })
 })
 </script>
