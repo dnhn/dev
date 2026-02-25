@@ -50,6 +50,29 @@ import { gsap } from 'gsap'
 import '@/scripts/gsap'
 import { SplitText } from 'gsap/SplitText'
 
+const splash = document.getElementById('splash') as HTMLElement
+const splashSvg = splash.querySelector('svg') as SVGSVGElement
+const splashPath = splashSvg.querySelector('path') as SVGPathElement
+const splashTl = gsap.timeline({ paused: true })
+.fromTo(splashSvg, {
+  width: 0,
+  height: 0,
+}, {
+  width: '25vw',
+  height: '25svh',
+  duration: .8,
+  ease: 'sine.out',
+})
+.from(splashPath, {
+  drawSVG: 0,
+  duration: 1.2,
+  ease: 'sine.inOut',
+}, '<')
+.to(splash, {
+  autoAlpha: 0,
+  duration: .2,
+  ease: 'none',
+}, '+=.3')
 const split = SplitText.create('.intro h1 .split', {
   type: 'words, chars',
   autoSplit: true
@@ -59,14 +82,16 @@ const splitP = SplitText.create('.intro p', {
   autoSplit: true
 })
 
-gsap.set(['.intro h1', '.intro p'], { autoAlpha: 1 })
+gsap.set(['.intro h1', '.intro p', splashSvg], { autoAlpha: 1 })
 
 const matchMedia = gsap.matchMedia('.intro')
 
 matchMedia.add('(prefers-reduced-motion: no-preference)', () => {
-  gsap.timeline().from(split.chars, {
+  gsap.timeline()
+  .add(splashTl.play(0))
+  .from(split.chars, {
     display: 'none',
-    delay: .25,
+    delay: .2,
     stagger: .2,
   })
   .from('.intro h1 .name', {
@@ -82,7 +107,9 @@ matchMedia.add('(prefers-reduced-motion: no-preference)', () => {
   })
 })
 .add('(prefers-reduced-motion: reduce)', () => {
-  gsap.timeline().from(split.chars, {
+  gsap.timeline()
+  .add(splashTl.play(0))
+  .from(split.chars, {
     opacity: 0,
     stagger: .2,
   })

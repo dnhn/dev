@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css'
 import Footer from '@/components/footer.astro'
+import ND from '@/components/nd.astro'
 
 interface Props {
   title?: string
@@ -44,5 +45,8 @@ const metaDescription = description || 'Front-end first and so much more. Crafti
     <Footer />
   </div>
 </main>
+<div id="splash" class="fixed inset-0 p-8 flex items-center justify-center bg-orange-50 dark:bg-neutral-900">
+  <ND style="visibility:hidden" />
+</div>
 </body>
 </html>

@@ -11,5 +11,5 @@ export const smoother = ScrollSmoother.create({
   content: 'body main .smooth-content',
   effects: true,
   normalizeScroll: true,
-  ignoreMobileResize: true
+  ignoreMobileResize: true,
 })
