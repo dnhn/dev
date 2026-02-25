@@ -8,18 +8,34 @@ interface Props {
 }
 
 const { title, description } = Astro.props
+
+const metaTitle = title ? `${title} — nhan.dev` : 'nhan.dev'
+const metaDescription = description || 'Front-end first and so much more. Crafting websites, mobile apps and beyond.'
 ---
 
 <html lang="en-gb">
 <head>
 <meta charset="utf-8">
-<title>{title ? `${title} — nhan.dev` : 'nhan.dev'}</title>
-<meta name="description" content={description || "Front-end first and so much more. Crafting websites, mobile apps and beyond."}>
+<title>{metaTitle}</title>
+<meta name="description" content={metaDescription}>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark light">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" type="image/png" sizes="512x512">
+
+<meta property="og:url" content="https://nhan.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content={metaTitle}>
+<meta property="og:description" content={metaDescription}>
+<meta property="og:image" content="https://nhan.dev/og.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="nhan.dev">
+<meta property="twitter:url" content="https://nhan.dev">
+<meta name="twitter:title" content={metaTitle}>
+<meta name="twitter:description" content={metaDescription}>
+<meta name="twitter:image" content="https://nhan.dev/og.png">
 </head>
 <body>
 <main>
