@@ -92,7 +92,7 @@ gsap.set(['.intro h1', '.intro .paragraph', splashSvg], { autoAlpha: 1 })
 
 const matchMedia = gsap.matchMedia('.intro')
 
-matchMedia.add('(prefers-reduced-motion: no-preference)', () => {
+matchMedia.add('(prefers-reduced-motion: no-preference)', function () {
   gsap.timeline()
   .add(splashTl.play(0))
   .from(split.chars, {
@@ -112,7 +112,7 @@ matchMedia.add('(prefers-reduced-motion: no-preference)', () => {
     ease: 'none',
   })
 })
-.add('(prefers-reduced-motion: reduce)', () => {
+.add('(prefers-reduced-motion: reduce)', function () {
   gsap.timeline()
   .add(splashTl.play(0))
   .from(split.chars, {

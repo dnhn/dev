@@ -66,7 +66,7 @@ let stripWidth = workStrip.scrollWidth
 let scrollLength = stripWidth - window.innerWidth
 const matchMedia = gsap.matchMedia('.work-wrapper')
 
-matchMedia.add('(prefers-reduced-motion: no-preference)', () => {
+matchMedia.add('(prefers-reduced-motion: no-preference)', function () {
   gsap.fromTo('.work-wrapper article', {
     opacity: 0,
     yPercent: 'random(0, 20)',
@@ -110,7 +110,7 @@ matchMedia.add('(prefers-reduced-motion: no-preference)', () => {
     },
   })
 })
-.add('(prefers-reduced-motion: reduce)', () => {
+.add('(prefers-reduced-motion: reduce)', function () {
   gsap.fromTo('.work-wrapper article', {
     opacity: 0,
   }, {

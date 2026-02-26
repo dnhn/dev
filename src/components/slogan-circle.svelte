@@ -3,7 +3,7 @@ interface Props {
   position: number
 }
 
-const { position }: Props = $props();
+const { position }: Props = $props()
 
 const classes = [
   'top-0 left-0 -translate-1/2',
