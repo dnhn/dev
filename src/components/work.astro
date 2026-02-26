@@ -13,7 +13,9 @@ import { WORKS } from '@/scripts/data'
             <Image
               src={work.image}
               alt=""
-              widths={[300, 600, work.image.width]}
+              widths={[250, 500, work.image.width]}
+              sizes={`(max-width: 400px) 250px, (max-width: 1024px) 500px, ${work.image.width}px`}
+              quality="low"
               class="squircle size-full object-cover rounded-[1.8rem] bg-white lg:rounded-[2.75rem]"
             />
           )}
