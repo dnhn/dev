@@ -3,13 +3,14 @@ import { SKILLS } from '@/scripts/data'
 ---
 
 <section class="skills-wrapper flex items-center justify-center py-20 xl:py-60 2xl:py-80">
-  <div class="container max-w-[60ch] flex justify-center items-center flex-wrap gap-6 text-xl sm:text-3xl sm:gap-8 2xl:gap-12 2xl:text-4xl">
+  <h2 class="sr-only">My Expertise</h2>
+  <div class="container max-w-[60ch] flex justify-center items-center flex-wrap gap-2 text-xl sm:text-3xl sm:gap-4 2xl:gap-8 2xl:text-4xl">
     {SKILLS.sort(() => Math.random() - .5).map(skill => (
       <a
         href={skill.url}
         target="_blank"
         rel="noopener noreferrer"
-        class="text-xl text-shadow-[0_1px] text-shadow-orange-50 sm:text-3xl 2xl:text-4xl hover:opacity-100! focus:opacity-100! dark:text-shadow-neutral-900 motion-reduce:rotate-0! motion-reduce:scale-100! motion-reduce:transform-none!"
+        class="p-2 text-xl text-shadow-[0_1px] text-shadow-orange-50 sm:text-3xl 2xl:text-4xl hover:opacity-100! focus:opacity-100! dark:text-shadow-neutral-900 motion-reduce:rotate-0! motion-reduce:scale-100! motion-reduce:transform-none!"
       >
         {skill.name}
       </a>
