@@ -11,7 +11,7 @@ interface Props {
 const { title, description } = Astro.props
 
 const metaTitle = title ? `${title} — nhan.dev` : 'nhan.dev'
-const metaDescription = description || 'Front-end first and so much more. Crafting websites, mobile apps and beyond.'
+const metaDescription = description || 'Front-end and so much more. Crafting websites, mobile apps and beyond. Let’s build together!'
 ---
 
 <html lang="en-gb">
@@ -27,14 +27,14 @@ const metaDescription = description || 'Front-end first and so much more. Crafti
 
 <meta property="og:url" content="https://nhan.dev">
 <meta property="og:type" content="website">
-<meta property="og:title" content={metaTitle}>
+<meta property="og:title" content={`${metaTitle} — Front-end developer`}>
 <meta property="og:description" content={metaDescription}>
 <meta property="og:image" content="https://nhan.dev/og.png">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta property="twitter:domain" content="nhan.dev">
 <meta property="twitter:url" content="https://nhan.dev">
-<meta name="twitter:title" content={metaTitle}>
+<meta name="twitter:title" content={`${metaTitle} — Front-end developer`}>
 <meta name="twitter:description" content={metaDescription}>
 <meta name="twitter:image" content="https://nhan.dev/og.png">
 </head>
