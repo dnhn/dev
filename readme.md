@@ -9,6 +9,14 @@ My portfolio.
 - [GSAP](https://gsap.com)
 - [Svelte](https://svelte.dev)
 
+## Accessibility
+
+- High contrast colours
+- Dark mode
+- Motion reduction
+- Keyboard navigation
+- Screen reader support
+
 ## Attributions
 
 - Icons
