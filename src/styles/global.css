@@ -1,14 +1,14 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans:  -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Segoe UI, Helvetica Neue, Adwaita Sans, Cantarell, Ubuntu, Roboto, Noto, Helvetica, Arial, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Segoe UI, Helvetica Neue, Adwaita Sans, Cantarell, Ubuntu, Roboto, Noto, Helvetica, Arial, sans-serif;
   --font-serif: Iowan Old Style, Apple Garamond, Baskerville, Palatino Linotype, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   --font-mono: Menlo, Consolas, Monaco, Adwaita Mono, Liberation Mono, Lucida Console, monospace;
 }
 
 @layer base {
   * {
-    @apply selection:bg-transparent selection:line-through focus-visible:outline-4 focus-visible:outline-dashed focus-visible:outline-offset-4 focus-visible:outline-current focus-visible:rounded-xs;
+    @apply outline-current outline-offset-4 selection:bg-transparent selection:line-through focus-visible:outline-4 focus-visible:outline-dashed focus-visible:rounded-xs;
   }
 
   body {
