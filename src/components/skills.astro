@@ -2,7 +2,7 @@
 import { SKILLS } from '@/scripts/data'
 ---
 
-<section class="relative overflow-x-hidden py-20 xl:py-60 2xl:py-80">
+<section class="skills relative overflow-x-hidden py-20 xl:py-60 2xl:py-80">
   <h2 class="sr-only">My Expertise</h2>
   <div class="skills-wrapper relative flex items-center justify-center will-change-transform">
     <div class="max-w-[60ch] relative px-5 flex justify-center items-center flex-wrap gap-2 will-change-transform text-xl sm:gap-4 sm:text-3xl 2xl:gap-8 2xl:text-4xl">
@@ -11,7 +11,7 @@ import { SKILLS } from '@/scripts/data'
           href={skill.url}
           target="_blank"
           rel="noopener noreferrer"
-          class="p-2 text-xl text-shadow-[0_1px] text-shadow-orange-50 sm:text-3xl 2xl:text-4xl hover:opacity-100! focus:opacity-100! dark:text-shadow-neutral-900 motion-reduce:rotate-0! motion-reduce:scale-100! motion-reduce:transform-none!"
+          class="p-2 text-xl text-shadow-[0_1px] text-shadow-orange-50 sm:text-3xl 2xl:text-4xl not-motion-reduce:hover:opacity-100! not-motion-reduce:focus:opacity-100! dark:text-shadow-neutral-900"
         >
           {skill.name}
         </a>
@@ -24,21 +24,38 @@ import { SKILLS } from '@/scripts/data'
 import { gsap } from 'gsap'
 import '@/scripts/gsap'
 
-gsap.from('.skills-wrapper a', {
-  opacity: .25,
-  scale: 'random(1.5, 5)',
-  rotate: 'random(-45, 45)',
-  ease: 'sine.inOut',
-  stagger: {
-    each: .1,
-    from: 'random',
-  },
-  scrollTrigger: {
-    trigger: '.skills-wrapper',
-    pin: true,
-    start: 'center center',
-    end: '+=250%',
-    scrub: true,
-  },
+const matchMedia = gsap.matchMedia()
+
+matchMedia.add('(prefers-reduced-motion: no-preference)', function () {
+  gsap.from('.skills-wrapper a', {
+    opacity: .25,
+    scale: 'random(1.5, 5)',
+    rotate: 'random(-45, 45)',
+    ease: 'sine.inOut',
+    stagger: {
+      each: .1,
+      from: 'random',
+    },
+    scrollTrigger: {
+      trigger: '.skills-wrapper',
+      pin: true,
+      start: 'center center',
+      end: '+=250%',
+      scrub: true,
+    },
+  })
+})
+.add('(prefers-reduced-motion: reduce)', function () {
+  gsap.from('.skills-wrapper a', {
+    opacity: 0,
+    stagger: {
+      each: .1,
+      from: 'random',
+    },
+    scrollTrigger: {
+      trigger: '.skills',
+      start: 'top bottom',
+    },
+  })
 })
 </script>
