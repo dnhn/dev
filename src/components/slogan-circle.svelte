@@ -13,9 +13,10 @@ const classes = [
 ]
 
 // https://freesound.org/s/459156
-const audio = new Audio('/sounds/459156_6142149-lq.mp3')
+let audio: HTMLAudioElement
 
 function playSound() {
+  if (!audio) audio = new Audio('/sounds/459156_6142149-lq.mp3')
   audio.currentTime = 0
   audio.play()
 }

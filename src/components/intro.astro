@@ -17,7 +17,7 @@ const content = [
       <h1 data-speed="clamp(1.8)" data-lag=".25" class="text-5xl leading-tight font-light sm:text-6xl lg:text-right lg:text-7xl xl:text-8xl" style="visibility:hidden">
         <span class="sr-only">Hey, I’m</span>
         <span class="split">Hey, I’m</span><br class="max-lg:hidden" />
-        <button type="button" onclick="playSound" class="name relative cursor-crosshair font-bold">
+        <button type="button" onclick="playNameSound()" class="name relative cursor-crosshair font-bold">
           <span class="sr-only">Nhan!</span>
           <span aria-hidden="true" class="bg bg-linear-45 from-cyan-300 via-indigo-500  to-blue-300 bg-clip-text text-transparent dark:from-lime-700 dark:via-yellow-300 dark:to-emerald-800">
             Nhan!
@@ -107,7 +107,7 @@ matchMedia.add('(prefers-reduced-motion: no-preference)', function () {
     delay: .2,
     stagger: .2,
   })
-  .from('.intro h1 .name', {
+  .from('.intro .name', {
     opacity: 0,
     left: -50,
   })
@@ -126,7 +126,7 @@ matchMedia.add('(prefers-reduced-motion: no-preference)', function () {
     opacity: 0,
     stagger: .2,
   })
-  .from('.intro h1 .name', {
+  .from('.intro .name', {
     opacity: 0,
   })
   .from(splitP.lines, {
@@ -136,14 +136,9 @@ matchMedia.add('(prefers-reduced-motion: no-preference)', function () {
   })
 })
 
-// https://freesound.org/s/241809
-const nameAudio = new Audio('/sounds/241809_4404552-lq.mp3')
 
-document.querySelector('.intro h1 .name')!.addEventListener('click', function () {
-  nameAudio.currentTime = 0
-  nameAudio.play()
-
-  gsap.fromTo('.intro h1 .name', {
+document.querySelector('.intro .name')!.addEventListener('click', function () {
+  gsap.fromTo('.intro .name', {
     scaleY: 1,
     scaleX: 1,
     fontWeight: 700,
@@ -157,4 +152,15 @@ document.querySelector('.intro h1 .name')!.addEventListener('click', function ()
     repeat: 1,
   })
 })
+</script>
+
+<!-- https://freesound.org/s/241809 -->
+<script is:inline>
+let nameAudio
+
+function playNameSound() {
+  if (!nameAudio) nameAudio = new Audio('/sounds/241809_4404552-lq.mp3')
+  nameAudio.currentTime = 0
+  nameAudio.play()
+}
 </script>

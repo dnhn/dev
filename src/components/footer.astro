@@ -24,11 +24,11 @@ import SunRising from '@/components/icons/sun-rising.astro'
           rel="noopener noreferrer"
           class="underline-offset-2 max-lg:underline hover:underline"
         >Web</a> a better place
-        <button type="button" aria-label="Shiny" class="group sun inline align-middle size-8 text-yellow-400 md:size-12 dark:text-[yellow]">
+        <button type="button" aria-label="Shiny" onclick="playSunSound()" class="group sun inline align-middle size-8 text-yellow-400 md:size-12 dark:text-[yellow]">
           <SunRising class="size-full transition-[scale] group-active:scale-150" />
         </button>
       </p>
-      <button type="button" class="hey group relative inline-block text-xl cursor-grab max-md:mt-4 md:text-4xl">
+      <button type="button" onclick="playHeySound()" class="hey group relative inline-block text-xl cursor-grab max-md:mt-4 md:text-4xl">
         <span class="sr-only">Contact me:</span>
         <Image
           src="/raised-hand.svg"
@@ -131,19 +131,22 @@ function onMove(e: MouseEvent) {
 
 footer.addEventListener('mouseenter', () => window.addEventListener('mousemove', onMove))
 footer.addEventListener('mouseleave', () => window.removeEventListener('mousemove', onMove))
+</script>
 
-// https://freesound.org/s/810183
-const sunAudio = new Audio('/sounds/810183_17437502-lq.mp3')
-// https://freesound.org/s/88401
-const heyAudio = new Audio('/sounds/88401_950462-lq.mp3')
+<!-- https://freesound.org/s/810183 -->
+<!-- https://freesound.org/s/88401 -->
+<script is:inline>
+let heyAudio, sunAudio
 
-document.querySelector('footer .sun')!.addEventListener('click', function () {
-  sunAudio.currentTime = 0
-  sunAudio.play()
-})
-
-document.querySelector('footer .hey')!.addEventListener('click', function () {
+function playHeySound() {
+  if (!heyAudio) heyAudio = new Audio('/sounds/88401_950462-lq.mp3')
   heyAudio.currentTime = 0
   heyAudio.play()
-})
+}
+
+function playSunSound() {
+  if (!sunAudio) sunAudio = new Audio('/sounds/810183_17437502-lq.mp3')
+  sunAudio.currentTime = 0
+  sunAudio.play()
+}
 </script>
