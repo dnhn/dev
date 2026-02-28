@@ -82,6 +82,7 @@ import SunRising from '@/components/icons/sun-rising.astro'
 import { gsap } from 'gsap'
 import '@/scripts/gsap'
 
+const footer = document.querySelector('footer') as HTMLElement
 const nd = document.querySelector('.nhan-dev') as HTMLElement
 const indicator = nd.querySelector('.indicator') as HTMLElement
 const paths = nd.querySelectorAll('path')
@@ -121,12 +122,15 @@ nd.addEventListener('click', function () {
 const xTo = gsap.quickTo(indicator, 'x', { duration: .5, ease: 'power4' })
 const yTo = gsap.quickTo(indicator, 'y', { duration: .5, ease: 'power4' })
 
-window.addEventListener('mousemove', function (e) {
+function onMove(e: MouseEvent) {
   const { left, top } = nd.getBoundingClientRect()
 
   xTo(e.clientX - left)
   yTo(e.clientY - top)
-})
+}
+
+footer.addEventListener('mouseenter', () => window.addEventListener('mousemove', onMove))
+footer.addEventListener('mouseleave', () => window.removeEventListener('mousemove', onMove))
 
 // https://freesound.org/s/810183
 const sunAudio = new Audio('/sounds/810183_17437502-lq.mp3')
