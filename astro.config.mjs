@@ -1,11 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
-import tailwindcss from '@tailwindcss/vite'
 import svelte from '@astrojs/svelte'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
+  build: {
+    inlineStylesheets: 'always',
+  },
+  integrations: [svelte()],
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [svelte()],
 })
