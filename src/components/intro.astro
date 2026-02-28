@@ -37,15 +37,22 @@ const content = [
 </section>
 
 <style>
+@property --gradient-x {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
 .bg {
   background-size: 200% 200%;
+  background-position: var(--gradient-x) 50%;
   animation: gradientShift 5s ease infinite;
 }
 
 @keyframes gradientShift {
-  0% { background-position: 0 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0 50%; }
+  0% { --gradient-x: 0%; }
+  50% { --gradient-x: 100%; }
+  100% { --gradient-x: 0%; }
 }
 </style>
 
