@@ -12,9 +12,9 @@ import { WORKS } from '@/scripts/data'
           {work.image.src && (
             <Image
               src={work.image}
+              width={work.image.width / 3}
               alt=""
-              widths={[300, 500]}
-              sizes={`(max-width: 400px) 300px, 500px`}
+              densities={[1, 2, 3]}
               quality="low"
               class="squircle size-full object-cover rounded-[1.8rem] bg-white lg:rounded-[2.75rem]"
             />

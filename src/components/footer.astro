@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets'
 import NhanDev from '@/components/nhan-dev.astro'
 import SloganCircle from '@/components/slogan-circle.svelte'
 import AtSymbol from '@/components/icons/at-symbol.astro'
@@ -12,7 +13,7 @@ import SunRising from '@/components/icons/sun-rising.astro'
     <button type="button" aria-label="The drawing" class="nhan-dev group relative cursor-none">
       <NhanDev class="w-full h-auto aspect-[3.75]" />
       <span aria-hidden="true" class="indicator absolute top-0 left-0 opacity-0 size-16 pointer-events-none transition-opacity group-hover:opacity-100">
-        <img src="/sparkles.svg" alt="" class="size-full" />
+        <Image src="/sparkles.svg" width={79} height={76} alt="" class="size-full" />
       </span>
     </button>
     <div data-lag=".125" class="mt-20 items-end justify-between gap-6 md:mt-32 md:flex">
@@ -29,12 +30,11 @@ import SunRising from '@/components/icons/sun-rising.astro'
       </p>
       <button type="button" class="hey group relative inline-block text-xl cursor-grab max-md:mt-4 md:text-4xl">
         <span class="sr-only">Contact me:</span>
-        <img
+        <Image
           src="/raised-hand.svg"
           alt="Raised hand"
           width={64}
           height={64}
-          loading="lazy"
           aria-hidden="true"
           class="absolute bottom-0 max-md:left-full md:right-full ml-2 mr-1 opacity-0 size-8 transition-[opacity,rotate] origin-[40%_70%] md:size-12 lg:group-hover:opacity-100 lg:group-focus:opacity-100 lg:group-hover:-rotate-20 lg:group-focus:-rotate-20 group-active:opacity-100 group-active:-rotate-20"
         />hey<AtSymbol aria-label="at" class="inline size-5 md:size-8" />nhan.dev
