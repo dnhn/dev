@@ -4,7 +4,7 @@ import ImgLF from '@/assets/lfapp.png'
 import ImgWager from '@/assets/wager.png'
 import ImgGF from '@/assets/gfood.png'
 import ImgDanskOff from '@/assets/danskoff.png'
-import ImgFMuseum from '@/assets/fmuseum.png'
+import ImgFredMus from '@/assets/fredmus.png'
 import ImgImg5 from '@/assets/img5.png'
 
 export const WORKS: {
@@ -50,7 +50,7 @@ export const WORKS: {
   },
   {
     title: 'Frederiksberg Museerne',
-    image: ImgFMuseum,
+    image: ImgFredMus,
     links: [
       { url: 'https://frederiksbergmuseerne.dk' },
     ],
