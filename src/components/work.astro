@@ -20,7 +20,7 @@ import { WORKS } from '@/scripts/data'
             />
           )}
           <div class="squircle absolute inset-1 rounded-[1.8rem] p-6 flex flex-col items-center justify-center gap-1 bg-linear-to-br from-black/30 to-black/60 text-white text-center transition-colors duration-500 lg:from-black/15 lg:rounded-[2.75rem] group-hover:bg-black/50 group-focus-within:bg-black/50 motion-reduce:bg-black/50">
-            <div class="text-white text-3xl font-light text-shadow-[1px_1px_black]">{work.title}</div>
+            <h3 class="text-white text-3xl font-light text-shadow-[1px_1px_black]">{work.title}</h3>
             {work.links.length > 0 && (
               <ul class="flex flex-wrap items-center justify-center">
                 {work.links.map(link => (
