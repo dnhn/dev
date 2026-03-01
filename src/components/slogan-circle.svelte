@@ -12,7 +12,6 @@ const classes = [
   'bottom-0 right-0 translate-1/2',
 ]
 
-// https://freesound.org/s/459156
 let audio: HTMLAudioElement
 
 function playSound() {
