@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   build: {
+    assets: 'a',
     inlineStylesheets: 'always',
   },
   integrations: [svelte()],
