@@ -3,7 +3,7 @@ import { Image } from 'astro:assets'
 import { WORKS } from '@/scripts/data'
 ---
 
-<section class="relative overflow-x-hidden">
+<section class="work relative overflow-x-hidden">
   <h2 class="sr-only">My Work</h2>
   <div class="work-wrapper relative flex-nowrap motion-safe:flex">
     <div class="work-strip relative p-12 flex flex-nowrap gap-20 sm:px-32 xl:gap-32 motion-reduce:flex-wrap motion-reduce:justify-center">
@@ -44,8 +44,8 @@ import { WORKS } from '@/scripts/data'
   </div>
 </section>
 
-<style>
-.squircle {
+<style is:global>
+.work .squircle {
   @supports (corner-shape: squircle) {
     corner-shape: squircle;
     border-radius: 6rem;

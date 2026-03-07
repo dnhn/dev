@@ -36,23 +36,23 @@ const content = [
   </div>
 </section>
 
-<style>
-@property --gradient-x {
+<style is:global>
+@property --bg-x {
   syntax: '<percentage>';
   inherits: false;
   initial-value: 0%;
 }
 
-.bg {
+.intro .bg {
   background-size: 200% 200%;
-  background-position: var(--gradient-x) 50%;
-  animation: gradientShift 5s ease infinite;
+  background-position: var(--bg-x) 50%;
+  animation: bgShift 5s ease infinite;
 }
 
-@keyframes gradientShift {
-  0% { --gradient-x: 0%; }
-  50% { --gradient-x: 100%; }
-  100% { --gradient-x: 0%; }
+@keyframes bgShift {
+  0% { --bg-x: 0%; }
+  50% { --bg-x: 100%; }
+  100% { --bg-x: 0%; }
 }
 </style>
 
