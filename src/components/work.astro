@@ -64,30 +64,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const workWrapper = document.querySelector('.work-wrapper') as HTMLElement
 const workStrip = document.querySelector('.work-strip') as HTMLElement
+const articles = gsap.utils.toArray<HTMLElement>(workStrip.querySelectorAll('article'))
 let stripWidth = workStrip.scrollWidth
 let scrollLength = stripWidth - window.innerWidth
 const matchMedia = gsap.matchMedia('.work-wrapper')
 
 matchMedia.add('(prefers-reduced-motion: no-preference)', function () {
-  gsap.fromTo('.work-wrapper article', {
-    opacity: 0,
-    yPercent: 'random(0, 20)',
-    rotate: 'random(-20, 20)',
-  }, {
-    opacity: 1,
-    yPercent: 'random(-10, 10)',
-    rotate: 'random(-6, 6)',
-    stagger: .2,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: workWrapper,
-      start: 'top bottom',
-      end: '+=250%',
-      scrub: true,
-    },
-  })
-
-  gsap.to(workStrip, {
+  const scrollTween = gsap.to(workStrip, {
     x: () => -scrollLength,
     ease: 'none',
     scrollTrigger: {
@@ -101,15 +84,39 @@ matchMedia.add('(prefers-reduced-motion: no-preference)', function () {
     },
   })
 
-  gsap.to(workWrapper, {
-    opacity: 0,
-    yPercent: -50,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: workWrapper,
-      start: 'top top',
-      scrub: true,
-    },
+  articles.forEach(article => {
+    gsap.fromTo(article, {
+      opacity: 0,
+      xPercent: 20,
+      yPercent: 'random(-20, 20)',
+      rotate: 'random(-20, 20)',
+    }, {
+      opacity: 1,
+      xPercent: 0,
+      yPercent: 'random(-10, 10)',
+      rotate: 'random(-6, 6)',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: article,
+        containerAnimation: scrollTween,
+        start: 'left right',
+        end: 'right right',
+        scrub: true,
+      },
+    })
+
+    gsap.fromTo(article, {
+      opacity: 1,
+    }, {
+      opacity: 0,
+      yPercent: -50,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: workWrapper,
+        start: 'top top',
+        scrub: true,
+      },
+    })
   })
 })
 .add('(prefers-reduced-motion: reduce)', function () {
