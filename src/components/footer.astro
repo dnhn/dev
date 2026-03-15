@@ -10,12 +10,7 @@ import SunRising from '@/components/icons/sun-rising.astro'
 
 <footer class="min-h-svh">
   <div class="container py-16 md:py-24 lg:py-36">
-    <button type="button" aria-label="The drawing" class="nhan-dev relative cursor-none">
-      <NhanDev class="w-full h-auto aspect-[3.75]" />
-      <span aria-hidden="true" class="indicator absolute top-0 left-0 size-[8vw] pointer-events-none transition-opacity md:size-16">
-        <Image src="/sparkles.svg" width={79} height={76} alt="" class="size-full" />
-      </span>
-    </button>
+    <NhanDev />
     <div data-lag=".125" class="mt-20 items-end justify-between gap-6 md:mt-32 md:flex">
       <p class="text-xl md:max-w-[14ch] md:text-4xl/snug">
         Make the <a
@@ -77,75 +72,6 @@ import SunRising from '@/components/icons/sun-rising.astro'
 
 <SloganCircle client:only="svelte" position={2} />
 <SloganCircle client:only="svelte" position={3} />
-
-<script>
-import { gsap } from 'gsap'
-import '@/scripts/gsap'
-
-const footer = document.querySelector('footer') as HTMLElement
-const nd = document.querySelector('.nhan-dev') as HTMLElement
-const indicator = nd.querySelector('.indicator') as HTMLElement
-const paths = nd.querySelectorAll('path')
-const draw = gsap.timeline({
-  defaults: { drawSVG: 0, ease: 'none' },
-  scrollTrigger: {
-    trigger: 'footer',
-    start: 'top center',
-  },
-})
-.from(paths[0], { duration: 3 })
-.from(paths[1], { duration: .75 })
-.from(paths[2], { duration: 1.25 })
-const drawBlank = gsap.timeline({
-  defaults: {
-    drawSVG: '100% 100%',
-    ease: 'none',
-  },
-  paused: true,
-})
-.to(paths[0], { duration: 1.5 })
-.to(paths[1], { duration: .375 })
-.to(paths[2], { duration: .625 })
-
-gsap.set(indicator, {
-  xPercent: -50,
-  yPercent: -50,
-  x: nd.getBoundingClientRect().width * .55,
-  y: nd.getBoundingClientRect().height / 2,
-})
-
-nd.addEventListener('click', function () {
-  if (draw.isActive() || drawBlank.isActive()) return
-  if (draw.progress() === 1) {
-    drawBlank.play(0).eventCallback('onComplete', function () {
-      draw.restart()
-    })
-  }
-})
-
-function onMove(e: MouseEvent) {
-  const { left, top } = nd.getBoundingClientRect()
-
-  gsap.quickTo(indicator, 'x', { duration: .5, ease: 'circ' })(e.clientX - left)
-  gsap.quickTo(indicator, 'y', { duration: .5, ease: 'circ' })(e.clientY - top)
-}
-
-nd.addEventListener('mouseenter', () => window.addEventListener('mousemove', onMove))
-nd.addEventListener('mouseleave', function () {
-  window.removeEventListener('mousemove', onMove)
-
-  const { width, height } = nd.getBoundingClientRect()
-
-  gsap.quickTo(indicator, 'x', { duration: 1, ease: 'elastic' })( width * .55)
-  gsap.quickTo(indicator, 'y', { duration: 1, ease: 'elastic' })( height / 2)
-})
-
-window.addEventListener('resize', function () {
-  const { width, height } = nd.getBoundingClientRect()
-
-  gsap.set(indicator, { x: width * .55, y: height / 2 })
-})
-</script>
 
 <script is:inline>
 let heyAudio, sunAudio
