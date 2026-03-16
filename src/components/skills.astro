@@ -1,10 +1,12 @@
 ---
 import { SKILLS } from '@/scripts/data'
+import FileName from '@/components/file-name.astro'
 ---
 
-<section class="skills relative overflow-x-hidden py-20 xl:py-60 2xl:py-80">
+<section class="skills relative overflow-x-hidden">
   <h2 class="sr-only">My Expertise</h2>
-  <div class="skills-wrapper relative flex items-center justify-center">
+  <div class="skills-wrapper relative flex items-center justify-center py-20 xl:py-60 2xl:py-80">
+    <FileName path="src/components/skills.astro" label="skills.astro" class="top-4 left-1/2 -translate-x-1/2" />
     <div class="max-w-[60ch] relative px-5 flex justify-center items-center flex-wrap gap-2 will-change-transform text-xl sm:gap-4 sm:text-3xl 2xl:gap-8 2xl:text-4xl">
       {SKILLS.sort(() => Math.random() - .5).map(skill => (
         <a
@@ -12,7 +14,7 @@ import { SKILLS } from '@/scripts/data'
           target="_blank"
           rel="noopener noreferrer"
           onmouseenter="playPopSound()"
-          class="p-2 text-xl text-shadow-[0_1px] text-shadow-orange-50 sm:text-3xl 2xl:text-4xl hover:z-1 focus:z-1 not-motion-reduce:hover:opacity-100! not-motion-reduce:focus:opacity-100! dark:text-shadow-neutral-900"
+          class="skill p-2 text-xl text-shadow-[0_1px] text-shadow-orange-50 sm:text-3xl 2xl:text-4xl hover:z-1 focus:z-1 not-motion-reduce:hover:opacity-100! not-motion-reduce:focus:opacity-100! dark:text-shadow-neutral-900"
         >
           {skill.name}
         </a>
@@ -28,7 +30,7 @@ import '@/scripts/gsap'
 const matchMedia = gsap.matchMedia()
 
 matchMedia.add('(prefers-reduced-motion: no-preference)', function () {
-  gsap.from('.skills-wrapper a', {
+  gsap.from('.skills-wrapper .skill', {
     opacity: .25,
     scale: 'random(1.5, 5)',
     rotate: 'random(-45, 45)',
@@ -47,7 +49,7 @@ matchMedia.add('(prefers-reduced-motion: no-preference)', function () {
   })
 })
 .add('(prefers-reduced-motion: reduce)', function () {
-  gsap.from('.skills-wrapper a', {
+  gsap.from('.skills-wrapper .skill', {
     opacity: 0,
     stagger: {
       each: .1,

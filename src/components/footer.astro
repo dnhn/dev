@@ -6,9 +6,11 @@ import AtSymbol from '@/components/icons/at-symbol.astro'
 import GitHubIcon from '@/components/icons/github-icon.astro'
 import LinkedInIcon from '@/components/icons/linkedin-icon.astro'
 import SunRising from '@/components/icons/sun-rising.astro'
+import FileName from '@/components/file-name.astro'
 ---
 
-<footer class="min-h-svh">
+<footer class="relative min-h-svh">
+  <FileName path="src/components/footer.astro" label="footer.astro" class="top-4 left-1/2 -translate-x-1/2" />
   <div class="container py-16 md:py-24 lg:py-36">
     <NhanDev />
     <div data-lag=".125" class="mt-20 items-end justify-between gap-6 md:mt-32 md:flex">

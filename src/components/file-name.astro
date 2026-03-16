@@ -1,0 +1,23 @@
+---
+const { label, path } = Astro.props
+
+const link = 'https://github.com/dnhn/dev/blob/root/' + path
+---
+
+<a
+  href={link}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-hidden="true"
+  class:list={['file-name hidden absolute z-1 p-2 rounded-lg bg-black text-white font-mono font-bold text-xs dark:bg-white dark:text-black', Astro.props.class]}
+>
+  {label}
+</a>
+
+<style is:global>
+.file-name {
+  .dev & {
+    display: initial;
+  }
+}
+</style>

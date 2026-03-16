@@ -24,4 +24,9 @@
   *:not(.dev-switcher, .dev-switcher *) {
     @apply outline outline-current outline-offset-0;
   }
+
+  section > .sr-only {
+    @apply m-4 size-auto text-4xl;
+    clip-path: none;
+  }
 }

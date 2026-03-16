@@ -1,5 +1,6 @@
 ---
 import SloganCircle from '@/components/slogan-circle.svelte'
+import FileName from '@/components/file-name.astro'
 
 const content = [
   'A front-end developer focused on building thoughtful, user-centric products and making the Web a better place.',
@@ -12,6 +13,7 @@ const content = [
 <SloganCircle client:only="svelte" position={1} />
 
 <section class="intro min-h-svh py-16 items-center justify-center md:py-32 lg:py-48 lg:flex">
+  <FileName path="src/components/intro.astro" label="intro.astro" class="top-4 left-1/2 -translate-x-1/2" />
   <div class="container gap-12 lg:flex xl:gap-16">
     <div class="flex-1/3">
       <h1 data-speed="clamp(1.8)" data-lag=".25" class="text-5xl leading-tight font-light sm:text-6xl lg:text-right lg:text-7xl xl:text-8xl">

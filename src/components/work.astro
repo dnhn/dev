@@ -1,11 +1,13 @@
 ---
 import { Image } from 'astro:assets'
 import { WORKS } from '@/scripts/data'
+import FileName from '@/components/file-name.astro'
 ---
 
 <section class="work relative overflow-x-hidden">
   <h2 class="sr-only">My Work</h2>
   <div class="work-wrapper relative flex-nowrap motion-safe:flex">
+    <FileName path="src/components/work.astro" label="work.astro" class="top-4 left-1/2 -translate-x-1/2" />
     <div class="work-strip relative p-12 flex flex-nowrap gap-20 sm:px-32 xl:gap-32 motion-reduce:flex-wrap motion-reduce:justify-center">
       {WORKS.map(work => (
         <article class="squircle group relative aspect-2/3 rounded-4xl w-[75vw] overflow-hidden p-1 bg-linear-to-br from-black/10 to-black/60 sm:w-[50vw] lg:w-md lg:aspect-square lg:rounded-[3rem] dark:from-white/80 dark:to-white/30">
@@ -45,13 +47,15 @@ import { WORKS } from '@/scripts/data'
 </section>
 
 <style is:global>
-.work .squircle {
-  @supports (corner-shape: squircle) {
-    corner-shape: squircle;
-    border-radius: 6rem;
+.work {
+  .squircle {
+    @supports (corner-shape: squircle) {
+      corner-shape: squircle;
+      border-radius: 6rem;
 
-    @media (min-width: 40rem) {
-      border-radius: 12rem;
+      @media (min-width: 40rem) {
+        border-radius: 12rem;
+      }
     }
   }
 }
