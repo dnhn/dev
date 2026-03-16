@@ -2,6 +2,7 @@
 import '@/styles/global.css'
 import Footer from '@/components/footer.astro'
 import Splash from '@/components/splash.astro'
+import DevSwitcher from '@/components/dev-switcher.astro'
 
 interface Props {
   title?: string
@@ -45,6 +46,7 @@ const metaDescription = description || 'Front-end and so much more. Crafting web
     <Footer />
   </div>
 </main>
+<DevSwitcher />
 <Splash />
 </body>
 </html>

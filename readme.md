@@ -6,7 +6,7 @@ My portfolio.
 
 - [Astro](https://astro.build)
 - [Tailwind CSS](https://tailwindcss.com)
-- [GSAP](https://gsap.com) — DrawSVG, ScrollSmoother, ScrollTrigger, SplitText
+- [GSAP](https://gsap.com) — DrawSVG, MorphSVG, ScrollSmoother, ScrollTrigger, SplitText
 - [Svelte](https://svelte.dev)
 
 ## Accessibility
@@ -25,6 +25,8 @@ My portfolio.
   - https://github.com/cyberalien/line-md
   - https://github.com/EmojiTwo/emojitwo
   - https://github.com/akveo/eva-icons
+  - https://github.com/dariushhpg1/IconaMoon
+  - https://github.com/tailwindlabs/heroicons
 - Sounds
   - https://freesound.org/s/88401
   - https://freesound.org/s/241809

@@ -8,7 +8,7 @@
 
 @layer base {
   * {
-    @apply outline-current outline-offset-4 selection:bg-transparent selection:line-through focus-visible:outline-4 focus-visible:outline-dashed focus-visible:rounded-xs;
+    @apply outline-current outline-offset-4 selection:bg-transparent selection:line-through focus-visible:outline-4! focus-visible:outline-dashed! focus-visible:rounded-xs;
   }
 
   body {
@@ -21,7 +21,7 @@
 }
 
 .dev {
-  * {
+  *:not(.dev-switcher, .dev-switcher *) {
     @apply outline outline-current outline-offset-0;
   }
 }
