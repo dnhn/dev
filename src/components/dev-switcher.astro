@@ -13,6 +13,7 @@ const props = Astro.props
     role="switch"
     aria-labelledby="dev-mode-label"
     aria-checked="false"
+    onclick="playSwitchAudio()"
     class="opacity-30 rounded-xl p-1 border-4 border-neutral-900 duration-200 group-hover:opacity-100 focus:opacity-100 dark:border-orange-50"
   >
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" {...props} class="size-8">
@@ -116,4 +117,14 @@ switcher.addEventListener('click', () => {
     tl.reversed(!tl.reversed())
   }
 })
+</script>
+
+<script is:inline>
+let switchAudio
+
+function playSwitchAudio() {
+  if (!switchAudio) switchAudio = new Audio('/sounds/mixkit-modern-technology-select-3124.wav')
+  switchAudio.currentTime = 0
+  switchAudio.play()
+}
 </script>
