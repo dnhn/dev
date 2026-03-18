@@ -4,7 +4,7 @@ const props = Astro.props
 
 <div class="group dev-switcher fixed left-1/2 bottom-2 -translate-x-1/2 text-center sm:bottom-6">
   <div id="dev-mode-label" class="mb-1 opacity-0 font-mono text-xs font-bold uppercase group-hover:opacity-100">
-    Dev Mode:
+    X-Ray:
     <span class="label-off">off</span>
     <span class="label-on hidden">on</span>
   </div>
@@ -70,7 +70,7 @@ const props = Astro.props
 </style>
 
 <script>
-import { gsap } from 'gsap';
+import { gsap } from 'gsap'
 
 const isDev = new URLSearchParams(window.location.search).get('dev') !== null
 if (isDev) document.body.classList.add('dev')
@@ -110,7 +110,7 @@ const tl = gsap.timeline({
   ease: 'power2.out',
 })
 
-switcher.addEventListener('click', () => {
+switcher.addEventListener('click', function () {
   if (tl.paused()) {
     tl.play()
   } else {
