@@ -7,7 +7,7 @@ import FileName from '@/components/file-name.astro'
   <h2 class="sr-only">My Expertise</h2>
   <div class="skills-wrapper relative flex items-center justify-center py-20 xl:py-60 2xl:py-80">
     <FileName path="src/components/skills.astro" label="skills.astro" class="top-4 left-1/2 -translate-x-1/2" />
-    <div class="max-w-[60ch] relative px-5 flex justify-center items-center flex-wrap gap-2 will-change-transform text-xl sm:gap-4 sm:text-3xl 2xl:gap-8 2xl:text-4xl">
+    <div class="max-w-[60ch] relative px-5 flex justify-center items-center flex-wrap gap-2 text-xl sm:gap-4 sm:text-3xl 2xl:gap-8 2xl:text-4xl">
       {SKILLS.sort(() => Math.random() - .5).map(skill => (
         <a
           href={skill.url}
