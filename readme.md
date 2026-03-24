@@ -6,7 +6,7 @@ My portfolio.
 
 - [Astro](https://astro.build)
 - [Tailwind CSS](https://tailwindcss.com)
-- [GSAP](https://gsap.com) — DrawSVG, MorphSVG, ScrollSmoother, ScrollTrigger, SplitText
+- [GSAP](https://gsap.com) DrawSVG MorphSVG ScrollSmoother ScrollTrigger SplitText
 - [Svelte](https://svelte.dev)
 
 ## Accessibility

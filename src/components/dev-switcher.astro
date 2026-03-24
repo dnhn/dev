@@ -82,23 +82,7 @@ const startPath = 'M4.78001 4.97002C4.92046 5.11065 4.99935 5.30127 4.99935 5.50
 // https://icon-sets.iconify.design/iconamoon/cursor-fill/
 const endPath = 'M2.92001 2.05003C2.79828 1.99994 2.66445 1.98701 2.53538 2.01287C2.40631 2.03872 2.28779 2.10221 2.19475 2.19532C2.1017 2.28843 2.03831 2.40701 2.01255 2.53609C1.9868 2.66518 1.99983 2.799 2.05001 2.9207L6.71668 14.254C6.76666 14.3755 6.85138 14.4794 6.96022 14.5529C7.06905 14.6263 7.19716 14.666 7.32846 14.6669C7.45977 14.6679 7.58842 14.63 7.69828 14.5581C7.80815 14.4862 7.89432 14.3834 7.94601 14.2627L9.73601 10.086C9.80344 9.92877 9.92875 9.80346 10.086 9.73603L14.2627 7.94603C14.3834 7.89434 14.4861 7.80816 14.5581 7.6983C14.63 7.58844 14.6678 7.45979 14.6669 7.32848C14.666 7.19718 14.6263 7.06907 14.5528 6.96024C14.4794 6.8514 14.3754 6.76667 14.254 6.7167L2.92001 2.05003Z'
 
-const tl = gsap.timeline({
-  paused: isDev,
-  onComplete: function () {
-    document.body.classList.remove('dev')
-    switcher.setAttribute('aria-checked', 'false')
-    const url = new URL(window.location.toString())
-    url.searchParams.delete('dev')
-    window.history.replaceState('', '', url)
-  },
-  onReverseComplete: function () {
-    document.body.classList.add('dev')
-    switcher.setAttribute('aria-checked', 'true')
-    const url = new URL(window.location.toString())
-    url.searchParams.set('dev', 'true')
-    window.history.replaceState('', '', url)
-  },
-})
+const tl = gsap.timeline({ paused: isDev })
 .to(switcherPath, {
   morphSVG: startPath,
   duration: .2,
@@ -111,11 +95,12 @@ const tl = gsap.timeline({
 })
 
 switcher.addEventListener('click', function () {
-  if (tl.paused()) {
-    tl.play()
-  } else {
-    tl.reversed(!tl.reversed())
-  }
+  const url = new URL(window.location.toString())
+  const isDev = document.body.classList.toggle('dev')
+  isDev ? url.searchParams.set('dev', 'true') : url.searchParams.delete('dev')
+  window.history.replaceState('', '', url)
+  switcher.setAttribute('aria-checked', String(isDev))
+  tl.paused() ? tl.play() : tl.reversed(!tl.reversed())
 })
 </script>
 
