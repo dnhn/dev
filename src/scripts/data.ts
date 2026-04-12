@@ -1,6 +1,6 @@
 import type { ImageMetadata } from 'astro'
 import ImgSpendful from '@/assets/spendful.png'
-import ImgLF from '@/assets/lfapp.png'
+import ImgLF from '@/assets/longf.png'
 import ImgWager from '@/assets/wager.png'
 import ImgGF from '@/assets/gfood.png'
 import ImgDanskOff from '@/assets/danskoff.png'
@@ -16,6 +16,8 @@ export const WORKS: {
     title: 'Spendful',
     image: ImgSpendful,
     links: [
+      { url: 'https://spendful.io' },
+      { label: 'Android', url: 'https://play.google.com/store/apps/details?id=com.spendful.app' },
       { label: 'iOS', url: 'https://apps.apple.com/app/id6757114071' },
     ],
   },
@@ -23,6 +25,8 @@ export const WORKS: {
     title: 'LongF',
     image: ImgLF,
     links: [
+      { url: 'https://longf.vn' },
+      { url: 'https://247.longf.vn' },
       { label: 'Android', url: 'https://play.google.com/store/apps/details?id=com.vietlong.longf' },
       { label: 'iOS', url: 'https://apps.apple.com/app/id6751319696' },
     ],
