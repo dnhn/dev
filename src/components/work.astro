@@ -4,145 +4,43 @@ import { WORKS } from '@/scripts/data'
 import FileName from '@/components/file-name.astro'
 ---
 
-<section class="work relative overflow-x-hidden">
+<section class="work relative">
   <h2 class="sr-only">My Work</h2>
-  <div class="work-wrapper relative flex-nowrap motion-safe:flex">
-    <FileName path="src/components/work.astro" label="work.astro" class="top-4 left-1/2 -translate-x-1/2" />
-    <div class="work-strip relative p-12 flex flex-nowrap gap-20 sm:p-32 xl:gap-32 motion-reduce:flex-wrap motion-reduce:justify-center">
-      {WORKS.map(work => (
-        <article class="squircle group relative aspect-2/3 rounded-4xl w-[75vw] overflow-hidden p-1 bg-linear-to-br from-black/10 to-black/60 sm:w-[50vw] lg:w-md lg:aspect-square lg:rounded-[3rem] dark:from-white/80 dark:to-white/30">
-          {work.image.src && (
-            <Image
-              src={work.image}
-              width={work.image.width / 3}
-              alt=""
-              densities={[1, 2, 3]}
-              quality="low"
-              class="squircle size-full object-cover rounded-[1.8rem] bg-white lg:rounded-[2.75rem]"
-            />
+  <FileName path="src/components/work.astro" label="work.astro" class="top-4 left-1/2 -translate-x-1/2" />
+  {WORKS.map(work => (
+    <article class="group relative h-svh overflow-hidden">
+      {work.image.src && (
+        <Image
+          src={work.image}
+          width={work.image.width}
+          alt=""
+          densities={[1, 2, 3]}
+          quality="high"
+          data-speed=".5"
+          class="size-full object-cover bg-white"
+        />
+      )}
+      <div class="absolute inset-0 p-6 flex items-center justify-center bg-linear-to-br from-black/50 to-black text-white text-center">
+        <div data-speed=".75">
+          <h3 class="text-white text-3xl font-light text-shadow-[1px_1px_black] sm:text-5xl 2xl:text-7xl">{work.title}</h3>
+          {work.links.length > 0 && (
+            <ul class="mt-2 flex flex-wrap items-center justify-center sm:mt-6 2xl:mt-8">
+              {work.links.map(link => (
+                <li>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block p-3 text-shadow-[1px_1px_black] underline-offset-2 hover:underline sm:p-4 sm:text-2xl 2xl:text-4xl 2xl:underline-offset-4"
+                  >
+                    {link.label || new URL(link.url).hostname}
+                  </a>
+                </li>
+              ))}
+            </ul>
           )}
-          <div class="squircle absolute inset-1 rounded-[1.8rem] p-6 flex flex-col items-center justify-center gap-1 bg-linear-to-br from-black/30 to-black/60 text-white text-center transition-colors duration-500 lg:from-black/15 lg:rounded-[2.75rem] group-hover:bg-black/50 group-focus-within:bg-black/50 motion-reduce:bg-black/50">
-            <h3 class="text-white text-3xl font-light text-shadow-[1px_1px_black]">{work.title}</h3>
-            {work.links.length > 0 && (
-              <ul class="flex flex-wrap items-center justify-center">
-                {work.links.map(link => (
-                  <li>
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-block p-3 font-medium text-shadow-[1px_1px_black] underline-offset-2 hover:underline"
-                    >
-                      {link.label || new URL(link.url).hostname}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </article>
-      ))}
-    </div>
-  </div>
+        </div>
+      </div>
+    </article>
+  ))}
 </section>
-
-<style is:global>
-.work {
-  .squircle {
-    @supports (corner-shape: squircle) {
-      corner-shape: squircle;
-      border-radius: 6rem;
-
-      @media (min-width: 40rem) {
-        border-radius: 12rem;
-      }
-    }
-  }
-}
-</style>
-
-<script>
-import { gsap } from 'gsap'
-import '@/scripts/gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-const workWrapper = document.querySelector('.work-wrapper') as HTMLElement
-const workStrip = document.querySelector('.work-strip') as HTMLElement
-const articles = gsap.utils.toArray<HTMLElement>(workStrip.querySelectorAll('article'))
-let stripWidth = workStrip.scrollWidth
-let scrollLength = stripWidth - window.innerWidth
-const matchMedia = gsap.matchMedia('.work-wrapper')
-
-matchMedia.add('(prefers-reduced-motion: no-preference)', function () {
-  const scrollTween = gsap.to(workStrip, {
-    x: () => -scrollLength,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: workWrapper,
-      pin: true,
-      scrub: true,
-      start: 'center center',
-      end: '+=400%',
-      anticipatePin: 2,
-      invalidateOnRefresh: true,
-    },
-  })
-
-  articles.forEach(article => {
-    gsap.fromTo(article, {
-      opacity: 0,
-      xPercent: 20,
-      yPercent: 'random(-20, 20)',
-      rotate: 'random(-20, 20)',
-    }, {
-      opacity: 1,
-      xPercent: 0,
-      yPercent: 'random(-10, 10)',
-      rotate: 'random(-6, 6)',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: article,
-        containerAnimation: scrollTween,
-        start: 'left right',
-        end: 'right right',
-        scrub: true,
-      },
-    })
-
-    gsap.fromTo(article, {
-      opacity: 1,
-    }, {
-      opacity: 0,
-      yPercent: -50,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: workWrapper,
-        start: 'top top',
-        scrub: true,
-      },
-    })
-  })
-})
-.add('(prefers-reduced-motion: reduce)', function () {
-  gsap.fromTo('.work-wrapper article', {
-    opacity: 0,
-  }, {
-    opacity: 1,
-    yPercent: 0,
-    rotate: 0,
-    duration: 1,
-    stagger: .5,
-    scrollTrigger: {
-      trigger: workWrapper,
-      start: 'top bottom',
-    },
-  })
-})
-
-ScrollTrigger.addEventListener('refreshInit', updateDimensions)
-
-function updateDimensions() {
-  stripWidth = workStrip.scrollWidth
-  scrollLength = stripWidth - window.innerWidth
-}
-</script>
