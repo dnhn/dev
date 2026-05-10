@@ -22,7 +22,7 @@ import FileName from '@/components/file-name.astro'
       )}
       <div class="absolute inset-0 p-6 flex items-center justify-center bg-linear-to-br from-black/50 to-black text-white text-center">
         <div data-speed=".75">
-          <h3 class="text-white text-3xl font-light text-shadow-[1px_1px_black] sm:text-5xl 2xl:text-7xl">{work.title}</h3>
+          <h3 class="text-white text-3xl/tight font-light text-shadow-[1px_1px_black] sm:text-5xl/tight 2xl:text-7xl/tight">{work.title}</h3>
           {work.links.length > 0 && (
             <ul class="mt-2 flex flex-wrap items-center justify-center sm:mt-6 2xl:mt-8">
               {work.links.map(link => (
@@ -44,3 +44,51 @@ import FileName from '@/components/file-name.astro'
     </article>
   ))}
 </section>
+
+<script>
+import { gsap } from 'gsap'
+import '@/scripts/gsap'
+import { SplitText } from 'gsap/SplitText'
+
+const work = document.querySelector('.work') as HTMLElement
+const articles = gsap.utils.toArray<HTMLElement>(work.querySelectorAll('article'))
+
+gsap.matchMedia(work).add('(prefers-reduced-motion: no-preference)', function () {
+  articles.forEach(function (article) {
+    const splitH = SplitText.create(article.querySelector('h3'), {
+      type: 'chars',
+      autoSplit: true,
+    })
+    const splitA = SplitText.create(article.getElementsByTagName('a'), {
+      type: 'chars',
+      autoSplit: true,
+    })
+
+    gsap.from(splitH.chars, {
+      autoAlpha: 0,
+      yPercent: 100,
+      duration: .3,
+      stagger: .015,
+      scrollTrigger: {
+        trigger: article,
+        start: 'center 90%',
+      },
+    })
+
+    gsap.from(splitA.chars, {
+      autoAlpha: 0,
+      yPercent: -100,
+      duration: .25,
+      delay: .25,
+      stagger: {
+        from: 'end',
+        each: .01,
+      },
+      scrollTrigger: {
+        trigger: article,
+        start: 'center 90%',
+      },
+    })
+  })
+})
+</script>
