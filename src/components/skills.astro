@@ -27,9 +27,8 @@ import FileName from '@/components/file-name.astro'
 import { gsap } from 'gsap'
 import '@/scripts/gsap'
 
-const matchMedia = gsap.matchMedia()
-
-matchMedia.add('(prefers-reduced-motion: no-preference)', function () {
+gsap.matchMedia()
+.add('(prefers-reduced-motion: no-preference)', function () {
   gsap.from('.skills-wrapper .skill', {
     opacity: .25,
     scale: 'random(1.5, 5)',

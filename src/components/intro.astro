@@ -100,9 +100,8 @@ const splitP = SplitText.create('.intro .paragraph', {
 gsap.set(['.intro .split', '.intro .paragraphs'], { color: '' })
 gsap.set('.intro .bg', { background: '' })
 
-const matchMedia = gsap.matchMedia('.intro')
-
-matchMedia.add('(prefers-reduced-motion: no-preference)', function () {
+gsap.matchMedia('.intro')
+.add('(prefers-reduced-motion: no-preference)', function () {
   gsap.timeline()
   .add(splashTl.play(0))
   .from(split.chars, {
