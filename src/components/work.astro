@@ -22,7 +22,9 @@ import FileName from '@/components/file-name.astro'
       )}
       <div class="absolute inset-0 p-5 flex items-center justify-center bg-linear-to-br from-black/40 to-black/95 text-center backdrop-blur-[2px] md:backdrop-blur-xs">
         <div data-speed=".75">
-          <h3 class=" text-3xl/tight font-light text-shadow-sm text-shadow-black sm:text-shadow-md sm:text-5xl/tight 2xl:text-7xl/tight">{work.title}</h3>
+          <h3 class="cursor-default text-3xl/tight font-light text-shadow-sm text-shadow-black sm:text-shadow-md sm:text-5xl/tight 2xl:text-7xl/tight">
+            {work.title}
+          </h3>
           {work.links.length > 0 && (
             <ul class="mt-2 flex flex-wrap items-center justify-center sm:mt-5 2xl:mt-6">
               {work.links.map(link => (
@@ -44,6 +46,51 @@ import FileName from '@/components/file-name.astro'
     </article>
   ))}
 </section>
+
+<style is:global>
+@media (prefers-reduced-motion: no-preference) {
+  .work h3 > * {
+    transition-property: font-weight, font-stretch;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+
+    &:has(+ * + * + *:hover) {
+      font-weight: 400;
+      font-stretch: 110%;
+    }
+
+    &:has(+ * + *:hover) {
+      font-weight: 500;
+      font-stretch: 115%;
+    }
+
+    &:has(+ *:hover) {
+      font-weight: 700;
+      font-stretch: 120%;
+    }
+
+    &:hover {
+      font-weight: 900;
+      font-stretch: 125%;
+
+      + * {
+        font-weight: 700;
+        font-stretch: 120%;
+
+        + * {
+          font-weight: 500;
+          font-stretch: 115%;
+
+          + * {
+            font-weight: 400;
+            font-stretch: 110%;
+          }
+        }
+      }
+    }
+  }
+}
+</style>
 
 <script>
 import { gsap } from 'gsap'
