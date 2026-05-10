@@ -4,7 +4,7 @@ import { WORKS } from '@/scripts/data'
 import FileName from '@/components/file-name.astro'
 ---
 
-<section class="work relative">
+<section class="work relative text-white">
   <h2 class="sr-only">My Work</h2>
   <FileName path="src/components/work.astro" label="work.astro" class="top-4 left-1/2 -translate-x-1/2" />
   {WORKS.map(work => (
@@ -14,24 +14,24 @@ import FileName from '@/components/file-name.astro'
           src={work.image}
           width={work.image.width}
           alt=""
-          densities={[1, 2, 3]}
-          quality="high"
+          densities={[1, 2]}
+          quality="low"
           data-speed=".5"
           class="size-full object-cover bg-white"
         />
       )}
-      <div class="absolute inset-0 p-6 flex items-center justify-center bg-linear-to-br from-black/50 to-black text-white text-center">
+      <div class="absolute inset-0 p-5 flex items-center justify-center bg-linear-to-br from-black/40 to-black/95 text-center backdrop-blur-[2px] md:backdrop-blur-xs">
         <div data-speed=".75">
-          <h3 class="text-white text-3xl/tight font-light text-shadow-[1px_1px_black] sm:text-5xl/tight 2xl:text-7xl/tight">{work.title}</h3>
+          <h3 class=" text-3xl/tight font-light text-shadow-sm text-shadow-black sm:text-shadow-md sm:text-5xl/tight 2xl:text-7xl/tight">{work.title}</h3>
           {work.links.length > 0 && (
-            <ul class="mt-2 flex flex-wrap items-center justify-center sm:mt-6 2xl:mt-8">
+            <ul class="mt-2 flex flex-wrap items-center justify-center sm:mt-5 2xl:mt-6">
               {work.links.map(link => (
                 <li>
                   <a
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-block p-3 text-shadow-[1px_1px_black] underline-offset-2 hover:underline sm:p-4 sm:text-2xl 2xl:text-4xl 2xl:underline-offset-4"
+                    class="inline-block p-3 text-shadow-sm text-shadow-black underline-offset-2 hover:underline sm:p-4 sm:text-shadow-md sm:text-2xl 2xl:text-4xl 2xl:underline-offset-4"
                   >
                     {link.label || new URL(link.url).hostname}
                   </a>
@@ -71,7 +71,7 @@ gsap.matchMedia(work).add('(prefers-reduced-motion: no-preference)', function ()
       stagger: .015,
       scrollTrigger: {
         trigger: article,
-        start: 'center 90%',
+        start: 'center bottom',
       },
     })
 
@@ -86,7 +86,7 @@ gsap.matchMedia(work).add('(prefers-reduced-motion: no-preference)', function ()
       },
       scrollTrigger: {
         trigger: article,
-        start: 'center 90%',
+        start: 'center bottom',
       },
     })
   })
