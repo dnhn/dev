@@ -56,34 +56,34 @@ import FileName from '@/components/file-name.astro'
 
     &:has(+ * + * + *:hover) {
       font-weight: 400;
-      font-stretch: 110%;
+      font-stretch: 105%;
     }
 
     &:has(+ * + *:hover) {
       font-weight: 500;
-      font-stretch: 115%;
+      font-stretch: 110%;
     }
 
     &:has(+ *:hover) {
       font-weight: 700;
-      font-stretch: 120%;
+      font-stretch: 115%;
     }
 
     &:hover {
       font-weight: 900;
-      font-stretch: 125%;
+      font-stretch: 120%;
 
       + * {
         font-weight: 700;
-        font-stretch: 120%;
+        font-stretch: 115%;
 
         + * {
           font-weight: 500;
-          font-stretch: 115%;
+          font-stretch: 110%;
 
           + * {
             font-weight: 400;
-            font-stretch: 110%;
+            font-stretch: 105%;
           }
         }
       }
