@@ -28,6 +28,7 @@ const draw = gsap.timeline({
     trigger: 'footer',
     start: 'top center',
   },
+  onComplete: function () { playDrawSound() },
 })
 .from(paths[0], { duration: 3 })
 .from(paths[1], { duration: .75 })
@@ -81,4 +82,12 @@ window.addEventListener('resize', function () {
 
   gsap.set(indicator, { x: width * .55, y: height / 2 })
 })
+
+let audio: HTMLAudioElement
+
+function playDrawSound() {
+  if (!audio) audio = new Audio('/sounds/241809_4404552-lq.mp3')
+  audio.currentTime = 0
+  audio.play()
+}
 </script>
