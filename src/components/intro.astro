@@ -110,8 +110,9 @@ gsap.matchMedia('.intro')
     stagger: .2,
   })
   .from('.intro .name', {
+    duration: 1,
     opacity: 0,
-    x: -50,
+    filter: 'blur(50px)',
   }, '>-.25')
   .from(splitP.chars, {
     yPercent: 100,
@@ -157,7 +158,7 @@ document.querySelector('.intro .name')!.addEventListener('click', function () {
 let nameAudio
 
 function playNameSound() {
-  if (!nameAudio) nameAudio = new Audio('/sounds/241809_4404552-lq.mp3')
+  if (!nameAudio) nameAudio = new Audio('/sounds/name.mp3')
   nameAudio.currentTime = 0
   nameAudio.play()
 }
